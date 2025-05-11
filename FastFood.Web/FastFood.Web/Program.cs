@@ -38,3 +38,4 @@ app.MapControllerRoute(
     pattern: "{area=Admin}/{controller=Categories}/{action=Index}/{id?}");
 app.MapRazorPages();
 app.Run();
+//password - !9G_j*.JEuP3?%q
