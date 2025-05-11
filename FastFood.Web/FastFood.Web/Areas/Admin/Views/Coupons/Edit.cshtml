@@ -1,0 +1,67 @@
+﻿@model FastFood.Models.Coupon
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Coupon</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (Model.CouponPicture != null && Model.CouponPicture.Length > 0)
+            {
+                <img src="data:image/png;base64,@Convert.ToBase64String(Model.CouponPicture)" alt="Coupon Image" style="max-width: 100px; max-height: 100px;" />
+            }
+            <div class="form-group">
+                <input type="hidden" asp-for="Id"/>
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CouponType" class="control-label"></label>
+                <select asp-for="CouponType" class="form-control" asp-items="@Html.GetEnumSelectList<CouponType>()">
+                    <option value="">Select Coupon Type</option>
+                </select>
+                <span asp-validation-for="CouponType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Discount" class="control-label"></label>
+                <input asp-for="Discount" class="form-control" />
+                <span asp-validation-for="Discount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinimumAmount" class="control-label"></label>
+                <input asp-for="MinimumAmount" class="form-control" />
+                <span asp-validation-for="MinimumAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CouponPicture" class="control-label"></label>
+                <input type="file" name="files" class="form-control" />
+                <span asp-validation-for="CouponPicture" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" type="checkbox" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

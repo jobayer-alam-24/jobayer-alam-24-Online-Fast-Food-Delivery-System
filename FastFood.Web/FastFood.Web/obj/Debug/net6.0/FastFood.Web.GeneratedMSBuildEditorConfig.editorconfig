@@ -32,6 +32,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/jobayer-alam-24-Online-Fast-Food-Delivery-System/FastFood.Web/FastFood.Web/Areas/Admin/Views/Coupons/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ291cG9uc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/jobayer-alam-24-Online-Fast-Food-Delivery-System/FastFood.Web/FastFood.Web/Areas/Admin/Views/Coupons/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ291cG9uc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/jobayer-alam-24-Online-Fast-Food-Delivery-System/FastFood.Web/FastFood.Web/Areas/Admin/Views/Coupons/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ291cG9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/jobayer-alam-24-Online-Fast-Food-Delivery-System/FastFood.Web/FastFood.Web/Areas/Admin/Views/Items/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSXRlbXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -54,6 +66,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/jobayer-alam-24-Online-Fast-Food-Delivery-System/FastFood.Web/FastFood.Web/Areas/Admin/Views/SubCategories/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3ViQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/jobayer-alam-24-Online-Fast-Food-Delivery-System/FastFood.Web/FastFood.Web/Areas/Admin/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/jobayer-alam-24-Online-Fast-Food-Delivery-System/FastFood.Web/FastFood.Web/Areas/Identity/Pages/Account/AccessDenied.cshtml]

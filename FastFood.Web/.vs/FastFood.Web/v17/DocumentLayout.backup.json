@@ -1,28 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{3DA7FF39-C901-454F-ADE2-2F691FEE63E1}|FastFood.Web\\FastFood.Web.csproj|d:\\jobayer-alam-24-online-fast-food-delivery-system\\fastfood.web\\fastfood.web\\areas\\admin\\views\\categories\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3DA7FF39-C901-454F-ADE2-2F691FEE63E1}|FastFood.Web\\FastFood.Web.csproj|solutionrelative:fastfood.web\\areas\\admin\\views\\categories\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3DA7FF39-C901-454F-ADE2-2F691FEE63E1}|FastFood.Web\\FastFood.Web.csproj|d:\\jobayer-alam-24-online-fast-food-delivery-system\\fastfood.web\\fastfood.web\\areas\\admin\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3DA7FF39-C901-454F-ADE2-2F691FEE63E1}|FastFood.Web\\FastFood.Web.csproj|solutionrelative:fastfood.web\\areas\\admin\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A14A5269-3512-4345-9737-064F9EDDEBDE}|FastFood.Models\\FastFood.Models.csproj|d:\\jobayer-alam-24-online-fast-food-delivery-system\\fastfood.web\\fastfood.models\\subcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A14A5269-3512-4345-9737-064F9EDDEBDE}|FastFood.Models\\FastFood.Models.csproj|solutionrelative:fastfood.models\\subcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A14A5269-3512-4345-9737-064F9EDDEBDE}|FastFood.Models\\FastFood.Models.csproj|d:\\jobayer-alam-24-online-fast-food-delivery-system\\fastfood.web\\fastfood.models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A14A5269-3512-4345-9737-064F9EDDEBDE}|FastFood.Models\\FastFood.Models.csproj|solutionrelative:fastfood.models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A14A5269-3512-4345-9737-064F9EDDEBDE}|FastFood.Models\\FastFood.Models.csproj|d:\\jobayer-alam-24-online-fast-food-delivery-system\\fastfood.web\\fastfood.models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A14A5269-3512-4345-9737-064F9EDDEBDE}|FastFood.Models\\FastFood.Models.csproj|solutionrelative:fastfood.models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -30,34 +9,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\Areas\\Admin\\Views\\Categories\\Create.cshtml",
-              "RelativeDocumentMoniker": "FastFood.Web\\Areas\\Admin\\Views\\Categories\\Create.cshtml",
-              "ToolTip": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\Areas\\Admin\\Views\\Categories\\Create.cshtml",
-              "RelativeToolTip": "FastFood.Web\\Areas\\Admin\\Views\\Categories\\Create.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA0AAABOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-11T03:11:25.654Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SubCategory.cs",
-              "DocumentMoniker": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Models\\SubCategory.cs",
-              "RelativeDocumentMoniker": "FastFood.Models\\SubCategory.cs",
-              "ToolTip": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Models\\SubCategory.cs",
-              "RelativeToolTip": "FastFood.Models\\SubCategory.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABEAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T02:29:40.262Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -69,45 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Item.cs",
-              "DocumentMoniker": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Models\\Item.cs",
-              "RelativeDocumentMoniker": "FastFood.Models\\Item.cs",
-              "ToolTip": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Models\\Item.cs",
-              "RelativeToolTip": "FastFood.Models\\Item.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T02:29:20.278Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Category.cs",
-              "DocumentMoniker": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Models\\Category.cs",
-              "RelativeDocumentMoniker": "FastFood.Models\\Category.cs",
-              "ToolTip": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Models\\Category.cs",
-              "RelativeToolTip": "FastFood.Models\\Category.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T02:20:38.297Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CategoriesController.cs",
-              "DocumentMoniker": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\Areas\\Admin\\Controllers\\CategoriesController.cs",
-              "RelativeDocumentMoniker": "FastFood.Web\\Areas\\Admin\\Controllers\\CategoriesController.cs",
-              "ToolTip": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\Areas\\Admin\\Controllers\\CategoriesController.cs",
-              "RelativeToolTip": "FastFood.Web\\Areas\\Admin\\Controllers\\CategoriesController.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAkwCkAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T02:18:23.423Z",
-              "EditorCaption": ""
             }
           ]
         }
