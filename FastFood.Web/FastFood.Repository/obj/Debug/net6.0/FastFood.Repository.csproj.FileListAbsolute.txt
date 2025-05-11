@@ -1,0 +1,16 @@
+D:\jobayer-alam-24-Online-Fast-Food-Delivery-System\FastFood.Web\FastFood.Repository\bin\Debug\net6.0\FastFood.Repository.deps.json
+D:\jobayer-alam-24-Online-Fast-Food-Delivery-System\FastFood.Web\FastFood.Repository\bin\Debug\net6.0\FastFood.Repository.dll
+D:\jobayer-alam-24-Online-Fast-Food-Delivery-System\FastFood.Web\FastFood.Repository\bin\Debug\net6.0\FastFood.Repository.pdb
+D:\jobayer-alam-24-Online-Fast-Food-Delivery-System\FastFood.Web\FastFood.Repository\bin\Debug\net6.0\FastFood.Models.dll
+D:\jobayer-alam-24-Online-Fast-Food-Delivery-System\FastFood.Web\FastFood.Repository\bin\Debug\net6.0\FastFood.Models.pdb
+D:\jobayer-alam-24-Online-Fast-Food-Delivery-System\FastFood.Web\FastFood.Repository\obj\Debug\net6.0\FastFood.Repository.csproj.AssemblyReference.cache
+D:\jobayer-alam-24-Online-Fast-Food-Delivery-System\FastFood.Web\FastFood.Repository\obj\Debug\net6.0\FastFood.Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\jobayer-alam-24-Online-Fast-Food-Delivery-System\FastFood.Web\FastFood.Repository\obj\Debug\net6.0\FastFood.Repository.AssemblyInfoInputs.cache
+D:\jobayer-alam-24-Online-Fast-Food-Delivery-System\FastFood.Web\FastFood.Repository\obj\Debug\net6.0\FastFood.Repository.AssemblyInfo.cs
+D:\jobayer-alam-24-Online-Fast-Food-Delivery-System\FastFood.Web\FastFood.Repository\obj\Debug\net6.0\FastFood.Repository.csproj.CoreCompileInputs.cache
+D:\jobayer-alam-24-Online-Fast-Food-Delivery-System\FastFood.Web\FastFood.Repository\obj\Debug\net6.0\FastFood.Repository.sourcelink.json
+D:\jobayer-alam-24-Online-Fast-Food-Delivery-System\FastFood.Web\FastFood.Repository\obj\Debug\net6.0\FastFood.46B052DB.Up2Date
+D:\jobayer-alam-24-Online-Fast-Food-Delivery-System\FastFood.Web\FastFood.Repository\obj\Debug\net6.0\FastFood.Repository.dll
+D:\jobayer-alam-24-Online-Fast-Food-Delivery-System\FastFood.Web\FastFood.Repository\obj\Debug\net6.0\refint\FastFood.Repository.dll
+D:\jobayer-alam-24-Online-Fast-Food-Delivery-System\FastFood.Web\FastFood.Repository\obj\Debug\net6.0\FastFood.Repository.pdb
+D:\jobayer-alam-24-Online-Fast-Food-Delivery-System\FastFood.Web\FastFood.Repository\obj\Debug\net6.0\ref\FastFood.Repository.dll
