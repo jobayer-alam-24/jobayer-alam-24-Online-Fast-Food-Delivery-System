@@ -1,8 +1,30 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using FastFood.Web.ViewModels
+@model ItemListsViewModel
+
+@{
+    ViewData["Title"] = "Food Menu";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h2 class="text-center my-4">Our Menu</h2>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.Items)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    @if (!string.IsNullOrEmpty(item.Image))
+                    {
+                        <img src="@item.Image" class="card-img-top" alt="@item.Title" style="height: 200px; object-fit: cover;" />
+                    }
+
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Title</h5>
+                        <p class="card-text text-success fw-bold">$@item.Price</p>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>

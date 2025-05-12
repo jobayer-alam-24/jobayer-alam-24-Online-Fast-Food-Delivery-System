@@ -14,6 +14,10 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddDefaultTokenProviders();
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Identity/Account/Login"; 
+});
 builder.Services.AddRazorPages();
 var app = builder.Build();
 
@@ -32,10 +36,14 @@ app.UseRouting();
 app.UseAuthentication();;
 
 app.UseAuthorization();
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{area=Admin}/{controller=Categories}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapRazorPages();
 app.Run();
 //password - !9G_j*.JEuP3?%q

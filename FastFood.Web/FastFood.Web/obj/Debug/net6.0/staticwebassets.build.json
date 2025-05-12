@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4rE3LkWysZkx/zU7SFrmeuVKgy2nQYkI3DF6VkKqHD4=",
+  "Hash": "Ud9+9kuovm5OIZbdembeq0LNgm2ndL8LExkWE4GAe8E=",
   "Source": "FastFood.Web",
   "BasePath": "_content/FastFood.Web",
   "Mode": "Default",
@@ -1361,12 +1361,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\wwwroot\\Images\\Items\\9c28433f-ed4e-49cb-aeed-4addbbda46cf-180+180px.jpg",
+      "Identity": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\wwwroot\\Images\\Items\\19cd973c-5e3b-48bb-bedb-d82fc12cff7c-500+500px.jpg",
       "SourceId": "FastFood.Web",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\wwwroot\\",
       "BasePath": "_content/FastFood.Web",
-      "RelativePath": "Images/Items/9c28433f-ed4e-49cb-aeed-4addbbda46cf-180+180px#[.{fingerprint}]?.jpg",
+      "RelativePath": "Images/Items/19cd973c-5e3b-48bb-bedb-d82fc12cff7c-500+500px#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1375,11 +1375,11 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "p16qktnwqy",
-      "Integrity": "HTn82Qy2CB9BI0Dx/COGDLPVAn73UM+70k37XIDgQYM=",
+      "Fingerprint": "j3poucph96",
+      "Integrity": "8QwilZDSZAGQRrG3Mntd4OdFD0PgBriXFCXH9698CbY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\Items\\9c28433f-ed4e-49cb-aeed-4addbbda46cf-180+180px.jpg"
+      "OriginalItemSpec": "wwwroot\\Images\\Items\\19cd973c-5e3b-48bb-bedb-d82fc12cff7c-500+500px.jpg"
     },
     {
       "Identity": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\wwwroot\\js\\site.js",
@@ -5150,8 +5150,8 @@
       ]
     },
     {
-      "Route": "Images/Items/9c28433f-ed4e-49cb-aeed-4addbbda46cf-180+180px.jpg",
-      "AssetFile": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\wwwroot\\Images\\Items\\9c28433f-ed4e-49cb-aeed-4addbbda46cf-180+180px.jpg",
+      "Route": "Images/Items/19cd973c-5e3b-48bb-bedb-d82fc12cff7c-500+500px.j3poucph96.jpg",
+      "AssetFile": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\wwwroot\\Images\\Items\\19cd973c-5e3b-48bb-bedb-d82fc12cff7c-500+500px.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5160,7 +5160,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "39557"
+          "Value": "119043"
         },
         {
           "Name": "Content-Type",
@@ -5168,48 +5168,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"HTn82Qy2CB9BI0Dx/COGDLPVAn73UM+70k37XIDgQYM=\""
+          "Value": "\"8QwilZDSZAGQRrG3Mntd4OdFD0PgBriXFCXH9698CbY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 11 May 2025 08:55:39 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-HTn82Qy2CB9BI0Dx/COGDLPVAn73UM+70k37XIDgQYM="
-        }
-      ]
-    },
-    {
-      "Route": "Images/Items/9c28433f-ed4e-49cb-aeed-4addbbda46cf-180+180px.p16qktnwqy.jpg",
-      "AssetFile": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\wwwroot\\Images\\Items\\9c28433f-ed4e-49cb-aeed-4addbbda46cf-180+180px.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "39557"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"HTn82Qy2CB9BI0Dx/COGDLPVAn73UM+70k37XIDgQYM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 11 May 2025 08:55:39 GMT"
+          "Value": "Mon, 12 May 2025 12:11:22 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5219,15 +5182,52 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "p16qktnwqy"
+          "Value": "j3poucph96"
         },
         {
           "Name": "label",
-          "Value": "Images/Items/9c28433f-ed4e-49cb-aeed-4addbbda46cf-180+180px.jpg"
+          "Value": "Images/Items/19cd973c-5e3b-48bb-bedb-d82fc12cff7c-500+500px.jpg"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-HTn82Qy2CB9BI0Dx/COGDLPVAn73UM+70k37XIDgQYM="
+          "Value": "sha256-8QwilZDSZAGQRrG3Mntd4OdFD0PgBriXFCXH9698CbY="
+        }
+      ]
+    },
+    {
+      "Route": "Images/Items/19cd973c-5e3b-48bb-bedb-d82fc12cff7c-500+500px.jpg",
+      "AssetFile": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\wwwroot\\Images\\Items\\19cd973c-5e3b-48bb-bedb-d82fc12cff7c-500+500px.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "119043"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8QwilZDSZAGQRrG3Mntd4OdFD0PgBriXFCXH9698CbY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 12 May 2025 12:11:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8QwilZDSZAGQRrG3Mntd4OdFD0PgBriXFCXH9698CbY="
         }
       ]
     },

@@ -15,7 +15,7 @@ namespace FastFood.Models
         public Item Item { get; set; }
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
-        [Required(ErrorMessage = "Count is Required."), MinLength(1)]
+        [Required(ErrorMessage = "Count is Required."), Range(1, int.MaxValue, ErrorMessage = "Quantity must be at least 1")]
         public int Count { get; set; }
     }
 }
