@@ -40,11 +40,14 @@
                             </li>
                         }
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Customer" asp-controller="Cart" asp-action="Index">
-                                Cart @await Component.InvokeAsync("Cart")
-                            </a>
-                        </li>
+                        @if(User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Customer" asp-controller="Cart" asp-action="Index">
+                                    Cart @await Component.InvokeAsync("Cart")
+                                </a>
+                            </li>
+                        }
 
                         <partial name="_LoginPartial.cshtml" />
                     </ul>

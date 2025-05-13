@@ -1,0 +1,42 @@
+﻿@using FastFood.Web.ViewModels
+@model OrderDetailsViewModel
+
+<h2>Order Details - Order #@Model.OrderHeader.Id</h2>
+
+<h4>Customer Info</h4>
+<p><strong>Name:</strong> @Model.OrderHeader.Name</p>
+<p><strong>Phone:</strong> @Model.OrderHeader.PhoneNumber</p>
+<p><strong>Order Date:</strong> @Model.OrderHeader.OrderDate.ToString("g")</p>
+<p><strong>Pickup Time:</strong> @Model.OrderHeader.DateOfPick.ToShortDateString() @Model.OrderHeader.TimeOfPick.ToShortTimeString()</p>
+<p><strong>Status:</strong> @Model.OrderHeader.OrderStatus</p>
+<p><strong>Payment Status:</strong> @Model.OrderHeader.PaymentStatus</p>
+<p><strong>Coupon:</strong> @Model.OrderHeader.CouponCode</p>
+<p><strong>Discount:</strong> @Model.OrderHeader.CouponDiscount.ToString("C")</p>
+<p><strong>Order Total:</strong> @Model.OrderHeader.OrderTotal.ToString("C")</p>
+
+<hr />
+
+<h4>Items</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Line Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderDetails)
+        {
+            <tr>
+                <td>@item.Item?.Title</td>
+                <td>@item.Description</td>
+                <td>@item.Price.ToString("C")</td>
+                <td>@item.Count</td>
+                <td>@(item.Price * item.Count).ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,5 +1,6 @@
 ﻿using FastFood.Models;
 using FastFood.Repository;
+using FastFood.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -45,6 +46,15 @@ namespace FastFood.Web.Areas.Admin.Controllers
                 }
             }
             return View(orders);
+        }
+        public IActionResult OrderDetails(int id)
+        {
+            var orderDetails = new OrderDetailsViewModel()
+            {
+                OrderHeader = _context.OrderHeaders.Include(x => x.ApplicationUser).FirstOrDefault(x => x.Id == id),
+                OrderDetails = _context.OrderDetails.Include(x => x.Item).Where(x => x.OrderHeaderId == id).ToList()
+            };
+            return View(orderDetails);
         }
     }
 }
