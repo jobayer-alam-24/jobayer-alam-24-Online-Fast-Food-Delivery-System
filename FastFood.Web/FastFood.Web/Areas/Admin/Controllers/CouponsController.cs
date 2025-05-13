@@ -1,10 +1,12 @@
 ﻿using FastFood.Models;
 using FastFood.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
 namespace FastFood.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class CouponsController : Controller
     {
         private readonly ApplicationDbContext _context;

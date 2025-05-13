@@ -1,6 +1,7 @@
 ﻿using FastFood.Models;
 using FastFood.Repository;
 using FastFood.Web.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace FastFood.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class SubCategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;

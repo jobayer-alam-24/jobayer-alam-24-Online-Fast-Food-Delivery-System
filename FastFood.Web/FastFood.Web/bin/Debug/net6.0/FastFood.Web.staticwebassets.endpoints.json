@@ -2305,6 +2305,88 @@
       ]
     },
     {
+      "Route": "Images/Items/14206bd8-742c-4ab7-bb68-119fb40906fe-samurai.jpg",
+      "AssetFile": "Images/Items/14206bd8-742c-4ab7-bb68-119fb40906fe-samurai.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "54640"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"L05Gr2UwygZzrDMW8PYCLPTXZZWswvM2u5m2HBH5x9g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 13 May 2025 04:36:56 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-L05Gr2UwygZzrDMW8PYCLPTXZZWswvM2u5m2HBH5x9g="
+        }
+      ]
+    },
+    {
+      "Route": "Images/Items/14206bd8-742c-4ab7-bb68-119fb40906fe-samurai.nq7wn65fpm.jpg",
+      "AssetFile": "Images/Items/14206bd8-742c-4ab7-bb68-119fb40906fe-samurai.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "54640"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"L05Gr2UwygZzrDMW8PYCLPTXZZWswvM2u5m2HBH5x9g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 13 May 2025 04:36:56 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nq7wn65fpm"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-L05Gr2UwygZzrDMW8PYCLPTXZZWswvM2u5m2HBH5x9g="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Items/14206bd8-742c-4ab7-bb68-119fb40906fe-samurai.jpg"
+        }
+      ]
+    },
+    {
       "Route": "Images/Items/19cd973c-5e3b-48bb-bedb-d82fc12cff7c-500+500px.j3poucph96.jpg",
       "AssetFile": "Images/Items/19cd973c-5e3b-48bb-bedb-d82fc12cff7c-500+500px.jpg",
       "Selectors": [],

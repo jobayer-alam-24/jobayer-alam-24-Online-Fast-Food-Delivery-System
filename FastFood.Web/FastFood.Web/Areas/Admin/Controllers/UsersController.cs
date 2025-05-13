@@ -1,10 +1,12 @@
 ﻿using System.Security.Claims;
 using FastFood.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FastFood.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         private readonly ApplicationDbContext context;

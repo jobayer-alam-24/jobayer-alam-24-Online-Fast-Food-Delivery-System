@@ -1,0 +1,81 @@
+﻿@using FastFood.Web.ViewModels
+@model CartOrderViewModel
+
+@{
+    ViewData["Title"] = "Cart Summary";
+}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0"><i class="bi bi-cart-fill"></i> Your Cart</h2>
+        </div>
+        <div class="card-body">
+
+            @if (Model.ListOfCart == null || !Model.ListOfCart.Any())
+            {
+                <div class="alert alert-warning text-center" role="alert">
+                    Your cart is empty.
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle text-center">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Item</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var cart in Model.ListOfCart)
+                            {
+                                <tr>
+                                    <td class="text-start">@cart.Item.Title</td>
+                                    <td class="text-success fw-bold">$@cart.Item.Price</td>
+                                    <td>
+                                        <div class="d-flex justify-content-center align-items-center gap-2">
+                                            <form asp-action="Decrease" asp-controller="Cart" asp-route-id="@cart.Id" method="post">
+                                                <button class="btn btn-sm btn-outline-secondary" type="submit">−</button>
+                                            </form>
+                                            <span class="fw-semibold">@cart.Count</span>
+                                            <form asp-action="Increase" asp-controller="Cart" asp-route-id="@cart.Id" method="post">
+                                                <button class="btn btn-sm btn-outline-secondary" type="submit">+</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                    <td class="fw-semibold">$@(cart.Item.Price * cart.Count)</td>
+                                    <td>
+                                        <form asp-action="Remove" asp-controller="Cart" asp-route-id="@cart.Id" method="post">
+                                            <button class="btn btn-sm btn-outline-danger" type="submit">
+                                                <i class="bi bi-trash"></i> Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-end mt-4">
+                    <h4>Total: <span class="text-success fw-bold">$@Model.OrderHeader.OrderTotal</span></h4>
+                </div>
+
+                <div class="text-end mt-3">
+                    <a href="/Checkout" class="btn btn-success btn-lg">
+                        <i class="bi bi-credit-card"></i> Proceed to Checkout
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

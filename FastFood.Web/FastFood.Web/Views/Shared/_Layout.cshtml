@@ -14,7 +14,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FastFood.Web</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -22,22 +22,30 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="~/Home/Index">Home</a>
                         </li>
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-dark" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Admin
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="Categories" asp-action="Index">Categories</a></li>
+                                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="SubCategories" asp-action="Index">Sub Categories</a></li>
+                                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="Items" asp-action="Index">Items</a></li>
+                                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="Coupons" asp-action="Index">Coupons</a></li>
+                                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a></li>
+                                </ul>
+                            </li>
+                        }
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Categories" asp-action="Index">Categories</a>
+                            <a class="nav-link text-dark" asp-area="Customer" asp-controller="Cart" asp-action="Index">
+                                Cart @await Component.InvokeAsync("Cart")
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="SubCategories" asp-action="Index">Sub Categories</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Items" asp-action="Index">Items</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Coupons" asp-action="Index">Coupons</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a>
-                        </li>
-                        <partial name="_LoginPartial.cshtml"></partial>
+
+                        <partial name="_LoginPartial.cshtml" />
                     </ul>
                 </div>
             </div>

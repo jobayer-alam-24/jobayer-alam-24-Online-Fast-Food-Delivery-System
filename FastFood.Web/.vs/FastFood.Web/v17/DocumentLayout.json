@@ -1,20 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{3DA7FF39-C901-454F-ADE2-2F691FEE63E1}|FastFood.Web\\FastFood.Web.csproj|d:\\jobayer-alam-24-online-fast-food-delivery-system\\fastfood.web\\fastfood.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3DA7FF39-C901-454F-ADE2-2F691FEE63E1}|FastFood.Web\\FastFood.Web.csproj|solutionrelative:fastfood.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3DA7FF39-C901-454F-ADE2-2F691FEE63E1}|FastFood.Web\\FastFood.Web.csproj|d:\\jobayer-alam-24-online-fast-food-delivery-system\\fastfood.web\\fastfood.web\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3DA7FF39-C901-454F-ADE2-2F691FEE63E1}|FastFood.Web\\FastFood.Web.csproj|solutionrelative:fastfood.web\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3DA7FF39-C901-454F-ADE2-2F691FEE63E1}|FastFood.Web\\FastFood.Web.csproj|d:\\jobayer-alam-24-online-fast-food-delivery-system\\fastfood.web\\fastfood.web\\views\\home\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3DA7FF39-C901-454F-ADE2-2F691FEE63E1}|FastFood.Web\\FastFood.Web.csproj|solutionrelative:fastfood.web\\views\\home\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -22,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -35,45 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\Views\\Home\\Details.cshtml",
-              "RelativeDocumentMoniker": "FastFood.Web\\Views\\Home\\Details.cshtml",
-              "ToolTip": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\Views\\Home\\Details.cshtml",
-              "RelativeToolTip": "FastFood.Web\\Views\\Home\\Details.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAwwBEAAABHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-12T13:05:10.559Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "RelativeDocumentMoniker": "FastFood.Web\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "ToolTip": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "RelativeToolTip": "FastFood.Web\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-12T12:34:04.894Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "FastFood.Web\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "FastFood.Web\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAQwC4AAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T11:46:08.664Z",
-              "EditorCaption": ""
             }
           ]
         }
