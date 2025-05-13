@@ -74,6 +74,11 @@ namespace FastFood.Web.Controllers
                     _context.Carts.Update(cartFromDb);
                 }
                 _context.SaveChanges();
+                var cartItems = await _context.Carts
+                .Where(x => x.ApplicationUserId == cart.ApplicationUserId)
+                .ToListAsync();
+
+                HttpContext.Session.SetInt32("SessionCart", cartItems.Count);
             }
             return RedirectToAction("Index");
         }

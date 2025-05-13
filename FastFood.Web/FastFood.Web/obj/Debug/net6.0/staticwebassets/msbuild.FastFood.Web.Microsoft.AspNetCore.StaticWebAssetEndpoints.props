@@ -16,13 +16,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\FastFood.Web.82op115xqy.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"82op115xqy"},{"Name":"integrity","Value":"sha256-8OTFZ8z0bKenK9xW\u002BNjIjCL4liZ5xIFdcu4HzildyTo="},{"Name":"label","Value":"_content/FastFood.Web/FastFood.Web.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1129"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00228OTFZ8z0bKenK9xW\u002BNjIjCL4liZ5xIFdcu4HzildyTo=\u0022"},{"Name":"Last-Modified","Value":"Sun, 11 May 2025 01:48:16 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1129"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00228OTFZ8z0bKenK9xW\u002BNjIjCL4liZ5xIFdcu4HzildyTo=\u0022"},{"Name":"Last-Modified","Value":"Tue, 13 May 2025 11:26:38 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/FastFood.Web/FastFood.Web.bundle.scp.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\FastFood.Web.82op115xqy.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-8OTFZ8z0bKenK9xW\u002BNjIjCL4liZ5xIFdcu4HzildyTo="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1129"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00228OTFZ8z0bKenK9xW\u002BNjIjCL4liZ5xIFdcu4HzildyTo=\u0022"},{"Name":"Last-Modified","Value":"Sun, 11 May 2025 01:48:16 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1129"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00228OTFZ8z0bKenK9xW\u002BNjIjCL4liZ5xIFdcu4HzildyTo=\u0022"},{"Name":"Last-Modified","Value":"Tue, 13 May 2025 11:26:38 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/FastFood.Web/favicon.61n19gt1b8.ico">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))</AssetFile>
@@ -59,6 +59,18 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-8QwilZDSZAGQRrG3Mntd4OdFD0PgBriXFCXH9698CbY="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"119043"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00228QwilZDSZAGQRrG3Mntd4OdFD0PgBriXFCXH9698CbY=\u0022"},{"Name":"Last-Modified","Value":"Mon, 12 May 2025 12:11:22 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/FastFood.Web/Images/Items/1fededd7-6290-4547-99f3-0af93c3770f3-appIcon.ico">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Items\1fededd7-6290-4547-99f3-0af93c3770f3-appIcon.ico'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-mnZQaIvM5V4Q1U3x9nSXoJHOJKAk0RqxVjq\u002BGjQ3eZY="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"169973"},{"Name":"Content-Type","Value":"image/x-icon"},{"Name":"ETag","Value":"\u0022mnZQaIvM5V4Q1U3x9nSXoJHOJKAk0RqxVjq\u002BGjQ3eZY=\u0022"},{"Name":"Last-Modified","Value":"Tue, 13 May 2025 11:44:36 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/FastFood.Web/Images/Items/1fededd7-6290-4547-99f3-0af93c3770f3-appIcon.ml55vfnd3j.ico">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Items\1fededd7-6290-4547-99f3-0af93c3770f3-appIcon.ico'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ml55vfnd3j"},{"Name":"integrity","Value":"sha256-mnZQaIvM5V4Q1U3x9nSXoJHOJKAk0RqxVjq\u002BGjQ3eZY="},{"Name":"label","Value":"_content/FastFood.Web/Images/Items/1fededd7-6290-4547-99f3-0af93c3770f3-appIcon.ico"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"169973"},{"Name":"Content-Type","Value":"image/x-icon"},{"Name":"ETag","Value":"\u0022mnZQaIvM5V4Q1U3x9nSXoJHOJKAk0RqxVjq\u002BGjQ3eZY=\u0022"},{"Name":"Last-Modified","Value":"Tue, 13 May 2025 11:44:36 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/FastFood.Web/js/site.6b9nfc4n3r.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>

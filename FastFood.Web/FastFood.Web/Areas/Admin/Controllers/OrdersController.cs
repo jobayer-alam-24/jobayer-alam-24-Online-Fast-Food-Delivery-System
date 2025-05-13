@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace FastFood.Web.Areas.Customer.Controllers
+namespace FastFood.Web.Areas.Admin.Controllers
 {
     [Authorize]
     [Area("Admin")]
@@ -44,7 +44,7 @@ namespace FastFood.Web.Areas.Customer.Controllers
                         break;
                 }
             }
-            return View();
+            return View(orders);
         }
     }
 }

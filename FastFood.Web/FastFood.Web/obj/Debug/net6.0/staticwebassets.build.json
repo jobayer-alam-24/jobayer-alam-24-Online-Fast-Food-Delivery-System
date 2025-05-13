@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "H6oFjURacHV/pRUgb6BOaQt22ROtWCbj8gBULPfMG9A=",
+  "Hash": "ympCtWR125GoHVEootGicQU8NRiCarpCfwWQU+uvR8U=",
   "Source": "FastFood.Web",
   "BasePath": "_content/FastFood.Web",
   "Mode": "Default",
@@ -1403,6 +1403,27 @@
       "OriginalItemSpec": "wwwroot\\Images\\Items\\19cd973c-5e3b-48bb-bedb-d82fc12cff7c-500+500px.jpg"
     },
     {
+      "Identity": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\wwwroot\\Images\\Items\\1fededd7-6290-4547-99f3-0af93c3770f3-appIcon.ico",
+      "SourceId": "FastFood.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\wwwroot\\",
+      "BasePath": "_content/FastFood.Web",
+      "RelativePath": "Images/Items/1fededd7-6290-4547-99f3-0af93c3770f3-appIcon#[.{fingerprint}]?.ico",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ml55vfnd3j",
+      "Integrity": "mnZQaIvM5V4Q1U3x9nSXoJHOJKAk0RqxVjq+GjQ3eZY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Items\\1fededd7-6290-4547-99f3-0af93c3770f3-appIcon.ico"
+    },
+    {
       "Identity": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\wwwroot\\js\\site.js",
       "SourceId": "FastFood.Web",
       "SourceType": "Discovered",
@@ -2727,7 +2748,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 11 May 2025 01:48:16 GMT"
+          "Value": "Tue, 13 May 2025 11:26:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2772,7 +2793,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 11 May 2025 01:48:16 GMT"
+          "Value": "Tue, 13 May 2025 11:26:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2817,7 +2838,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 11 May 2025 01:48:16 GMT"
+          "Value": "Tue, 13 May 2025 11:26:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2854,7 +2875,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 11 May 2025 01:48:16 GMT"
+          "Value": "Tue, 13 May 2025 11:26:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5331,6 +5352,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-8QwilZDSZAGQRrG3Mntd4OdFD0PgBriXFCXH9698CbY="
+        }
+      ]
+    },
+    {
+      "Route": "Images/Items/1fededd7-6290-4547-99f3-0af93c3770f3-appIcon.ico",
+      "AssetFile": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\wwwroot\\Images\\Items\\1fededd7-6290-4547-99f3-0af93c3770f3-appIcon.ico",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "169973"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/x-icon"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mnZQaIvM5V4Q1U3x9nSXoJHOJKAk0RqxVjq+GjQ3eZY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 13 May 2025 11:44:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-mnZQaIvM5V4Q1U3x9nSXoJHOJKAk0RqxVjq+GjQ3eZY="
+        }
+      ]
+    },
+    {
+      "Route": "Images/Items/1fededd7-6290-4547-99f3-0af93c3770f3-appIcon.ml55vfnd3j.ico",
+      "AssetFile": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\wwwroot\\Images\\Items\\1fededd7-6290-4547-99f3-0af93c3770f3-appIcon.ico",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "169973"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/x-icon"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mnZQaIvM5V4Q1U3x9nSXoJHOJKAk0RqxVjq+GjQ3eZY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 13 May 2025 11:44:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ml55vfnd3j"
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Items/1fededd7-6290-4547-99f3-0af93c3770f3-appIcon.ico"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-mnZQaIvM5V4Q1U3x9nSXoJHOJKAk0RqxVjq+GjQ3eZY="
         }
       ]
     },

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FastFood.Repository")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b9fa3757c8b7c1d62e5f291d29b3e7490148da0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72dd65b0e7dcaa17c9d03553f46c70039ed3a1e6")]
 [assembly: System.Reflection.AssemblyProductAttribute("FastFood.Repository")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FastFood.Repository")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

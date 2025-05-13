@@ -27,15 +27,12 @@ namespace FastFood.Web.ViewComponents
                 }
                 else
                 {
-                    var cart = await _context.Carts
+                    var cartCount = await _context.Carts
                         .Include(x => x.Item)
                         .Where(x => x.ApplicationUserId == userId)
                         .ToListAsync();
-
-                    int itemCount = cart?.Count ?? 0;
-
-                    HttpContext.Session.SetInt32("SessionCart", itemCount);
-                    return View(itemCount);
+                    HttpContext.Session.SetInt32("SessionCart", cartCount.Count);
+                    return View(cartCount.Count);
                 }
             }
 
