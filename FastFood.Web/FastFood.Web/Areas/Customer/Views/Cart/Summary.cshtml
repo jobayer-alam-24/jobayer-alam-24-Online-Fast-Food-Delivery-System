@@ -1,0 +1,136 @@
+﻿@using FastFood.Web.ViewModels
+@model CartOrderViewModel
+
+@{
+    ViewData["Title"] = "Cart Summary";
+}
+@if(ViewBag.ErrorMessage != null)
+{
+    <h1>@ViewBag.ErrorMessage</h1>
+}
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Your Cart</h2>
+        </div>
+        <div class="card-body">
+            @if (Model.ListOfCart == null || !Model.ListOfCart.Any())
+            {
+                <div class="alert alert-warning text-center" role="alert">
+                    Your cart is empty.
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle text-center">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Item</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var cart in Model.ListOfCart)
+                            {
+                                <tr>
+                                    <td class="text-start">@cart.Item.Title</td>
+                                    <td class="text-success fw-bold">$@cart.Item.Price</td>
+                                    <td>
+                                        <div class="d-flex justify-content-center align-items-center gap-2">
+                                            <form asp-action="Decrease" asp-controller="Cart" asp-route-id="@cart.Id" method="post">
+                                                <button class="btn btn-sm btn-outline-secondary" type="submit">−</button>
+                                            </form>
+                                            <span class="fw-semibold">@cart.Count</span>
+                                            <form asp-action="Increase" asp-controller="Cart" asp-route-id="@cart.Id" method="post">
+                                                <button class="btn btn-sm btn-outline-secondary" type="submit">+</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                    <td class="fw-semibold">$@(cart.Item.Price * cart.Count)</td>
+                                    <td>
+                                        <form asp-action="Remove" asp-controller="Cart" asp-route-id="@cart.Id" method="post">
+                                            <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-end mt-4">
+                    <h4>Total (Including Vat): <span class="text-success fw-bold">$@Model.OrderHeader.OrderTotal</span></h4>
+                </div>
+
+                <hr class="my-4" />
+
+                <h4 class="mb-3">Shipping Details</h4>
+                <form asp-action="Summary" asp-controller="Cart" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <input type="hidden" asp-for="@Model.OrderHeader.ApplicationUserId"/>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label asp-for="@Model.OrderHeader.Name" class="form-label"></label>
+                            <input asp-for="@Model.OrderHeader.Name" class="form-control" />
+                            <span asp-validation-for="@Model.OrderHeader.Name" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="@Model.OrderHeader.PhoneNumber" class="form-label"></label>
+                            <input asp-for="@Model.OrderHeader.PhoneNumber" class="form-control" />
+                            <span asp-validation-for="@Model.OrderHeader.PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="@Model.OrderHeader.OrderDate" class="form-label">Pick Date</label>
+                            <input asp-for="@Model.OrderHeader.OrderDate" class="form-control" type="date" value="@DateTime.UtcNow" />
+                            <span asp-validation-for="@Model.OrderHeader.DateOfPick" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="@Model.OrderHeader.TimeOfPick" class="form-label">Pick Time</label>
+                            <input asp-for="@Model.OrderHeader.TimeOfPick" value="@DateTime.UtcNow" class="form-control" type="time" />
+                            <span asp-validation-for="@Model.OrderHeader.TimeOfPick" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="text-end mt-4">
+                        <button onclick="return InputValidate()" type="submit" id="btnPlaceOrder" class="btn btn-success btn-lg">Place Order</button>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+		function InputValidate() {
+        var name = document.getElementById("OrderHeader_Name").value;
+        var phoneNumber = document.getElementById("OrderHeader_PhoneNumber").value;
+        var dateOfPick = document.getElementById("OrderHeader_OrderDate").value;
+        var timeOfPick = document.getElementById("OrderHeader_TimeOfPick").value;
+
+        if (name === "") {
+            alert("Please enter your name.");
+            return false;
+        }
+        if (phoneNumber === "") {
+            alert("Please enter your phone number.");
+            return false;
+        }
+        if (dateOfPick === "") {
+            alert("Please select a pick-up date.");
+            return false;
+        }
+        if (timeOfPick === "") {
+            alert("Please select a pick-up time.");
+            return false;
+        }
+        return true;
+
+		}
+    </script>
+}

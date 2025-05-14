@@ -1,4 +1,5 @@
-﻿using FastFood.Models;
+﻿using System.Security.Claims;
+using FastFood.Models;
 using FastFood.Repository;
 using FastFood.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,91 @@ namespace FastFood.Web.Areas.Customer.Controllers
             }
             return View(details);
         }
+        [HttpGet]
+        public IActionResult Summary()
+        {
+            var loggedInUserId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
+           details = new CartOrderViewModel()
+           {
+               OrderHeader = new OrderHeader(),
+               ListOfCart = _context.Carts.Include(x => x.Item).Where(x => x.ApplicationUserId == loggedInUserId).ToList()
+           };
+            details.OrderHeader.ApplicationUser = _context.ApplicationUsers.FirstOrDefault(x => x.Id == loggedInUserId);
+            details.OrderHeader.Name = details.OrderHeader.ApplicationUser.Name;
+            details.OrderHeader.PhoneNumber = details.OrderHeader.ApplicationUser.PhoneNumber;
+            foreach(var cart in details.ListOfCart)
+            {
+                details.OrderHeader.OrderTotal += cart.Item.Price * cart.Count;
+            }
+            return View(details);
+        }
+        [HttpPost]
+        public IActionResult Summary(CartOrderViewModel vm)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = "User Not Found";
+                return View(vm);
+            }
+
+            
+            vm.ListOfCart = _context.Carts
+                .Where(c => c.ApplicationUserId == userId)
+                .Include(c => c.Item)
+                .ToList();
+
+            if (vm.ListOfCart == null || !vm.ListOfCart.Any())
+            {
+                ViewBag.ErrorMessage = "Cart is empty";
+                return View(vm);
+            }
+
+            var newOrder = new OrderHeader
+            {
+                ApplicationUserId = user.Id,
+                ApplicationUser = user,
+                Name = vm.OrderHeader.Name,
+                PhoneNumber = vm.OrderHeader.PhoneNumber,
+                OrderDate = DateTime.Now,
+                TimeOfPick = vm.OrderHeader.TimeOfPick,
+                DateOfPick = vm.OrderHeader.DateOfPick,
+                OrderStatus = OrderStatus.Pending,
+                PaymentStatus = PaymentStatus.Pending,
+                TransactionId = Guid.NewGuid().ToString()
+            };
+
+            foreach (var cart in vm.ListOfCart)
+            {
+                if (cart.Item == null)
+                {
+                    ViewBag.ErrorMessage = "One or more items in the cart are invalid.";
+                    return View(vm);
+                }
+
+                newOrder.SubTotal += cart.Item.Price * cart.Count;
+            }
+
+            newOrder.OrderTotal = newOrder.SubTotal - newOrder.CouponDiscount;
+
+            _context.OrderHeaders.Add(newOrder);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult OrderDetails(int id)
+        {
+            var orderDetails = new OrderDetailsViewModel()
+            { 
+                OrderHeader = _context.OrderHeaders.Include(x => x.ApplicationUser).FirstOrDefault(x => x.Id == id),
+                OrderDetails = _context.OrderDetails.Include(x => x.Item).Where(x => x.Item.Id == id).ToList()
+            };
+            return View(orderDetails);
+        }
+
         public async Task<IActionResult> Increase(int id)
         {
             var cart = await _context.Carts.FirstOrDefaultAsync(x => x.Id == id);

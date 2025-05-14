@@ -1,42 +1,84 @@
 ﻿@using FastFood.Web.ViewModels
 @model OrderDetailsViewModel
 
-<h2>Order Details - Order #@Model.OrderHeader.Id</h2>
+@{
+    ViewData["Title"] = "Order Details";
+}
 
-<h4>Customer Info</h4>
-<p><strong>Name:</strong> @Model.OrderHeader.Name</p>
-<p><strong>Phone:</strong> @Model.OrderHeader.PhoneNumber</p>
-<p><strong>Order Date:</strong> @Model.OrderHeader.OrderDate.ToString("g")</p>
-<p><strong>Pickup Time:</strong> @Model.OrderHeader.DateOfPick.ToShortDateString() @Model.OrderHeader.TimeOfPick.ToShortTimeString()</p>
-<p><strong>Status:</strong> @Model.OrderHeader.OrderStatus</p>
-<p><strong>Payment Status:</strong> @Model.OrderHeader.PaymentStatus</p>
-<p><strong>Coupon:</strong> @Model.OrderHeader.CouponCode</p>
-<p><strong>Discount:</strong> @Model.OrderHeader.CouponDiscount.ToString("C")</p>
-<p><strong>Order Total:</strong> @Model.OrderHeader.OrderTotal.ToString("C")</p>
+<h2 class="mb-4">Order Summary</h2>
 
-<hr />
+<div class="card mb-4">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Customer Name:</dt>
+            <dd class="col-sm-9">@Model.OrderHeader.Name</dd>
 
-<h4>Items</h4>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Item</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Line Total</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.OrderDetails)
-        {
+            <dt class="col-sm-3">Phone Number:</dt>
+            <dd class="col-sm-9">@Model.OrderHeader.PhoneNumber</dd>
+
+            <dt class="col-sm-3">Order Date:</dt>
+            <dd class="col-sm-9">@Model.OrderHeader.OrderDate.ToString("yyyy-MM-dd")</dd>
+
+            <dt class="col-sm-3">Pick Up Date:</dt>
+            <dd class="col-sm-9">@Model.OrderHeader.DateOfPick.ToString("yyyy-MM-dd")</dd>
+
+            <dt class="col-sm-3">Pick Up Time:</dt>
+            <dd class="col-sm-9">@Model.OrderHeader.TimeOfPick.ToString("hh\\:mm")</dd>
+
+            <dt class="col-sm-3">Coupon Code:</dt>
+            <dd class="col-sm-9">@Model.OrderHeader.CouponCode</dd>
+
+            <dt class="col-sm-3">Coupon Discount:</dt>
+            <dd class="col-sm-9">$@Model.OrderHeader.CouponDiscount</dd>
+
+            <dt class="col-sm-3">Sub Total:</dt>
+            <dd class="col-sm-9">$@Model.OrderHeader.SubTotal</dd>
+
+            <dt class="col-sm-3">Order Total:</dt>
+            <dd class="col-sm-9">$@Model.OrderHeader.OrderTotal</dd>
+
+            <dt class="col-sm-3">Order Status:</dt>
+            <dd class="col-sm-9">@Model.OrderHeader.OrderStatus</dd>
+
+            <dt class="col-sm-3">Payment Status:</dt>
+            <dd class="col-sm-9">@Model.OrderHeader.PaymentStatus</dd>
+
+            <dt class="col-sm-3">Transaction ID:</dt>
+            <dd class="col-sm-9">@Model.OrderHeader.TransactionId</dd>
+        </dl>
+    </div>
+</div>
+
+<h4>Ordered Items</h4>
+
+@if (Model.OrderDetails != null && Model.OrderDetails.Any())
+{
+    <table class="table table-striped table-bordered mt-3">
+        <thead>
             <tr>
-                <td>@item.Item?.Title</td>
-                <td>@item.Description</td>
-                <td>@item.Price.ToString("C")</td>
-                <td>@item.Count</td>
-                <td>@(item.Price * item.Count).ToString("C")</td>
+                <th>Item Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderDetails)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>$@item.Price</td>
+                    <td>@item.Count</td>
+                    <td>$@(item.Price * item.Count)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">No items found in this order.</div>
+}
+<a asp-action="Index" class="btn btn-secondary mt-3">Back to Orders</a>

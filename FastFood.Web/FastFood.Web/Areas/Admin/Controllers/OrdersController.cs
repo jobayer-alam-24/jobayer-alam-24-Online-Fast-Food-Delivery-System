@@ -19,34 +19,73 @@ namespace FastFood.Web.Areas.Admin.Controllers
         public IActionResult Index(string status)
         {
             IEnumerable<OrderHeader> orders;
-            if(User.IsInRole("Admin"))
+
+            if (User.IsInRole("Admin"))
             {
-                orders = _context.OrderHeaders.Include(x => x.ApplicationUser).ToList();
+                orders = _context.OrderHeaders
+                    .Include(x => x.ApplicationUser)
+                    .ToList();
             }
             else
             {
                 var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-                orders = _context.OrderHeaders.Include(x => x.ApplicationUser).Where(x => x.ApplicationUserId == userId).ToList();
-                switch (status)
-                {
-                    case "pending":
-                        orders = orders.Where(x => x.OrderStatus == "Pending".ToLower()).ToList();
-                        break;
-                    case "approved":
-                        orders = orders.Where(x => x.OrderStatus == "Approved".ToLower()).ToList();
-                        break;
-                    case "underprocess":
-                        orders = orders.Where(x => x.OrderStatus == "UnderProcess".ToLower()).ToList();
-                        break;
-                    case "shipped":
-                        orders = orders.Where(x => x.OrderStatus == "Shipped".ToLower()).ToList();
-                        break;
-                    default:
-                        break;
-                }
+                orders = _context.OrderHeaders
+                    .Include(x => x.ApplicationUser)
+                    .Where(x => x.ApplicationUserId == userId)
+                    .ToList();
             }
+
+            if (!string.IsNullOrEmpty(status) && Enum.TryParse<OrderStatus>(status, true, out var parsedStatus))
+            {
+                orders = orders.Where(x => x.OrderStatus == parsedStatus).ToList();
+            }
+
             return View(orders);
         }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var orderHeader = await _context.OrderHeaders.FindAsync(id);
+            ViewBag.Total = orderHeader.OrderTotal;
+            if (orderHeader == null) return NotFound();
+
+            return View(orderHeader);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, OrderHeader orderHeader)
+        {
+            if (id != orderHeader.Id) return NotFound();
+            ViewData["Total"] = orderHeader.OrderTotal;
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(orderHeader);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!_context.OrderHeaders.Any(e => e.Id == id)) return NotFound();
+                    else throw;
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(orderHeader);
+        }
+        public async Task<IActionResult> Delete(int id)
+        {
+            var orderHeader = await _context.OrderHeaders.FindAsync(id);
+            if (orderHeader != null)
+            {
+                _context.OrderHeaders.Remove(orderHeader);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
         public IActionResult OrderDetails(int id)
         {
             var orderDetails = new OrderDetailsViewModel()
