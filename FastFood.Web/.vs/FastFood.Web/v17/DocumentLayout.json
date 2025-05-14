@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3DA7FF39-C901-454F-ADE2-2F691FEE63E1}|FastFood.Web\\FastFood.Web.csproj|d:\\jobayer-alam-24-online-fast-food-delivery-system\\fastfood.web\\fastfood.web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3DA7FF39-C901-454F-ADE2-2F691FEE63E1}|FastFood.Web\\FastFood.Web.csproj|solutionrelative:fastfood.web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +27,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\appsettings.json",
+              "RelativeDocumentMoniker": "FastFood.Web\\appsettings.json",
+              "ToolTip": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\appsettings.json",
+              "RelativeToolTip": "FastFood.Web\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-14T08:32:57.804Z",
+              "EditorCaption": ""
             }
           ]
         }
