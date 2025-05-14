@@ -106,19 +106,26 @@ namespace FastFood.Web.Areas.Customer.Controllers
 
             _context.OrderHeaders.Add(newOrder);
             _context.SaveChanges();
+            foreach (var cart in vm.ListOfCart)
+            {
+                var orderDetails = new OrderDetails
+                {
+                    OrderHeaderId = newOrder.Id,
+                    ItemId = cart.Item.Id,
+                    Item = cart.Item,
+                    Count = cart.Count,
+                    Name = cart.Item.Title,
+                    Description = cart.Item.Description,
+                    Price = cart.Item.Price
+                };
 
+                _context.OrderDetails.Add(orderDetails);
+            }
+
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        public IActionResult OrderDetails(int id)
-        {
-            var orderDetails = new OrderDetailsViewModel()
-            { 
-                OrderHeader = _context.OrderHeaders.Include(x => x.ApplicationUser).FirstOrDefault(x => x.Id == id),
-                OrderDetails = _context.OrderDetails.Include(x => x.Item).Where(x => x.Item.Id == id).ToList()
-            };
-            return View(orderDetails);
-        }
 
         public async Task<IActionResult> Increase(int id)
         {

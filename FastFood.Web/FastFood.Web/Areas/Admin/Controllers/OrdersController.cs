@@ -95,5 +95,29 @@ namespace FastFood.Web.Areas.Admin.Controllers
             };
             return View(orderDetails);
         }
+        public IActionResult OrderDetailsCustomer(int id)
+        {
+            string userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
+
+            var orderHeader = _context.OrderHeaders
+                .Include(x => x.ApplicationUser)
+                .FirstOrDefault(x => x.Id == id && x.ApplicationUserId == userId);
+
+            if (orderHeader == null)
+            {
+                return NotFound();
+            }
+
+            var orderDetails = new OrderDetailsViewModel()
+            {
+                OrderHeader = orderHeader,
+                OrderDetails = _context.OrderDetails
+                    .Include(x => x.Item)
+                    .Where(x => x.OrderHeaderId == id)
+                    .ToList()
+            };
+
+            return View(orderDetails);
+        }
     }
 }

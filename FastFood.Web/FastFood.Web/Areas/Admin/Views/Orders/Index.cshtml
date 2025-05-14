@@ -1,59 +1,68 @@
 ﻿@model IEnumerable<FastFood.Models.OrderHeader>
 
 @{
-    ViewData["Title"] = "Index";
+	ViewData["Title"] = "Index";
 }
-
+<h3>Search By Payment Status</h3>
 <div class="btn-group" role="group">
-    <a asp-controller="Orders" asp-action="Index" asp-route-status="Pending" class="btn btn-primary">Pending</a>
-    <a asp-controller="Orders" asp-action="Index" asp-route-status="Processing" class="btn btn-info">Processing</a>
-    <a asp-controller="Orders" asp-action="Index" asp-route-status="UnderProcess" class="btn btn-warning">Under Process</a>
-    <a asp-controller="Orders" asp-action="Index" asp-route-status="Shipped" class="btn btn-success">Shipped</a>
-    <a asp-controller="Orders" asp-action="Index" asp-route-status="Delivered" class="btn btn-secondary">Delivered</a>
-    <a asp-controller="Orders" asp-action="Index" asp-route-status="Canceled" class="btn btn-danger">Canceled</a>
-    <a asp-controller="Orders" asp-action="Index" class="btn btn-secondary">All</a>
+	<a asp-controller="Orders" asp-action="Index" asp-route-status="Pending" class="btn btn-primary">Pending</a>
+	<a asp-controller="Orders" asp-action="Index" asp-route-status="Processing" class="btn btn-info">Processing</a>
+	<a asp-controller="Orders" asp-action="Index" asp-route-status="UnderProcess" class="btn btn-warning">Under Process</a>
+	<a asp-controller="Orders" asp-action="Index" asp-route-status="Shipped" class="btn btn-success">Shipped</a>
+	<a asp-controller="Orders" asp-action="Index" asp-route-status="Delivered" class="btn btn-secondary">Delivered</a>
+	<a asp-controller="Orders" asp-action="Index" asp-route-status="Canceled" class="btn btn-danger">Canceled</a>
+	<a asp-controller="Orders" asp-action="Index" class="btn btn-secondary">All</a>
 </div>
 
 @if (Model != null && Model.Any())
 {
-    <table class="table mt-2">
-        <thead>
-            <tr>
-                <th>@Html.DisplayNameFor(model => model.Id)</th>
-                <th>@Html.DisplayNameFor(model => model.OrderDate)</th>
-                <th>@Html.DisplayNameFor(model => model.Name)</th>
-                <th>@Html.DisplayNameFor(model => model.OrderTotal)</th>
-                <th>@Html.DisplayNameFor(model => model.OrderStatus)</th>
-                <th>@Html.DisplayNameFor(model => model.PaymentStatus)</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                    <td>@Html.DisplayFor(modelItem => item.OrderDate)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                    <td>@Html.DisplayFor(modelItem => item.OrderTotal)</td>
-                    <td>@Html.DisplayFor(modelItem => item.OrderStatus)</td>
-                    <td>@Html.DisplayFor(modelItem => item.PaymentStatus)</td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("OrderDetails", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new
-                            {
-                                onclick = "return confirm('Are you sure you want to delete this Order?');"
-                            })
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+	<table class="table mt-2">
+		<thead>
+			<tr>
+				<th>@Html.DisplayNameFor(model => model.Id)</th>
+				<th>@Html.DisplayNameFor(model => model.OrderDate)</th>
+				<th>@Html.DisplayNameFor(model => model.Name)</th>
+				<th>@Html.DisplayNameFor(model => model.OrderTotal)</th>
+				<th>@Html.DisplayNameFor(model => model.OrderStatus)</th>
+				<th>@Html.DisplayNameFor(model => model.PaymentStatus)</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>@Html.DisplayFor(modelItem => item.Id)</td>
+					<td>@Html.DisplayFor(modelItem => item.OrderDate)</td>
+					<td>@Html.DisplayFor(modelItem => item.Name)</td>
+					<td>@Html.DisplayFor(modelItem => item.OrderTotal)</td>
+					<td>@Html.DisplayFor(modelItem => item.OrderStatus)</td>
+					<td>@Html.DisplayFor(modelItem => item.PaymentStatus)</td>
+					<td>
+						@if (User.IsInRole("Admin"))
+						{
+							@Html.ActionLink("Edit", "Edit ", new { id = item.Id })
+							<span>||</span>
+							@Html.ActionLink("Details", "OrderDetails", new { id = item.Id }) <span>||</span>
+							@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new
+								{
+									onclick = "return confirm('Are you sure you want to delete this Order?');"
+								})
+							;
+						}else
+						{
+							@Html.ActionLink("Details", "OrderDetailsCustomer", new { id = item.Id })
+							
+						}
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
 }
 else
 {
-    <div class="alert alert-info mt-3">
-        No orders found.
-    </div>
+	<div class="alert alert-info mt-3">
+		No orders found.
+	</div>
 }
