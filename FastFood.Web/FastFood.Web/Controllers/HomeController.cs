@@ -20,6 +20,14 @@ namespace FastFood.Web.Controllers
             _logger = logger;
             _context = context;
         }
+        public IActionResult GetCouponImage(int id)
+        {
+            var coupon = _context.Coupons.Find(id);
+            if (coupon == null || coupon.CouponPicture == null)
+                return NotFound();
+
+            return File(coupon.CouponPicture, "image/jpeg");
+        }
 
         public async Task<IActionResult> Index()
         {

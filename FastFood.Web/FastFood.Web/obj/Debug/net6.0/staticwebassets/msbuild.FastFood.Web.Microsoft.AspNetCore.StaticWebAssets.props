@@ -72,6 +72,42 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Items\0680454e-273b-4d45-a32c-a07e7e7742ef-pizza.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Items\14206bd8-742c-4ab7-bb68-119fb40906fe-samurai.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>FastFood.Web</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/FastFood.Web</BasePath>
+      <RelativePath>Images/Items/14206bd8-742c-4ab7-bb68-119fb40906fe-samurai.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>nq7wn65fpm</Fingerprint>
+      <Integrity>L05Gr2UwygZzrDMW8PYCLPTXZZWswvM2u5m2HBH5x9g=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Items\14206bd8-742c-4ab7-bb68-119fb40906fe-samurai.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Items\19cd973c-5e3b-48bb-bedb-d82fc12cff7c-500+500px.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>FastFood.Web</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/FastFood.Web</BasePath>
+      <RelativePath>Images/Items/19cd973c-5e3b-48bb-bedb-d82fc12cff7c-500+500px.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>j3poucph96</Fingerprint>
+      <Integrity>8QwilZDSZAGQRrG3Mntd4OdFD0PgBriXFCXH9698CbY=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Items\19cd973c-5e3b-48bb-bedb-d82fc12cff7c-500+500px.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Items\22858330-4565-421c-964b-2d3a7d56fd4d-rosogolla.jpeg'))">
       <SourceType>Package</SourceType>
       <SourceId>FastFood.Web</SourceId>
@@ -90,6 +126,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Items\22858330-4565-421c-964b-2d3a7d56fd4d-rosogolla.jpeg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Items\271c4bb6-a5aa-4d32-8b99-23b87a76cf6d-bestquote.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>FastFood.Web</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/FastFood.Web</BasePath>
+      <RelativePath>Images/Items/271c4bb6-a5aa-4d32-8b99-23b87a76cf6d-bestquote.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>byijozeip3</Fingerprint>
+      <Integrity>TTWeADiXcszgZFIDcgxbPIXTYo0HAGtgcpwBryY3aZs=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Items\271c4bb6-a5aa-4d32-8b99-23b87a76cf6d-bestquote.png'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Items\a5da2ec6-f2c9-4ff0-bb1f-37b382972cd1-burger.jpeg'))">
       <SourceType>Package</SourceType>
       <SourceId>FastFood.Web</SourceId>
@@ -107,6 +161,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Items\a5da2ec6-f2c9-4ff0-bb1f-37b382972cd1-burger.jpeg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Items\b8c384dd-b376-4757-9441-9b44004458d5-burger.jpeg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>FastFood.Web</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/FastFood.Web</BasePath>
+      <RelativePath>Images/Items/b8c384dd-b376-4757-9441-9b44004458d5-burger.jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>dyel9az7qd</Fingerprint>
+      <Integrity>C8COcYCsJs6E68gLsk0StQQsJK0VuqmmLssWKHnnkHQ=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Items\b8c384dd-b376-4757-9441-9b44004458d5-burger.jpeg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))">
       <SourceType>Package</SourceType>
