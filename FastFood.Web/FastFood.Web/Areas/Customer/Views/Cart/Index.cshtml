@@ -5,13 +5,84 @@
     ViewData["Title"] = "Cart Summary";
 }
 
-<div class="container mt-5">
+<style>
+    .form-container {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+    }
+
+    .card {
+        border-radius: 1rem;
+        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.25);
+        max-width: 700px;
+        width: 100%;
+    }
+
+    .card-header {
+        background-color: #dc3545 !important; /* Bootstrap danger red */
+        color: white;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+    }
+
+    h2, h4 {
+        font-weight: 700;
+    }
+
+    .table th, .table td {
+        vertical-align: middle !important;
+    }
+
+    .text-success {
+        color: #dc3545 !important; /* Override success green with danger red */
+    }
+
+    .btn-outline-danger {
+        border-color: #dc3545;
+        color: #dc3545;
+    }
+
+        .btn-outline-danger:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+
+    .btn-success {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+        .btn-success:hover {
+            background-color: #a71d2a;
+            border-color: #a71d2a;
+        }
+
+    .btn-outline-secondary {
+        border-color: #dc3545;
+        color: #dc3545;
+    }
+
+        .btn-outline-secondary:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+
+    .alert-warning {
+        background-color: #f8d7da;
+        color: #842029;
+        border-color: #f5c2c7;
+    }
+</style>
+
+<div class="form-container">
     <div class="card shadow">
-        <div class="card-header bg-primary text-white">
-            <h2 class="mb-0"><i class="bi bi-cart-fill"></i> Your Cart</h2>
+        <div class="card-header text-center">
+            <h2><i class="bi bi-cart-fill"></i> Your Cart</h2>
         </div>
         <div class="card-body">
-
             @if (Model.ListOfCart == null || !Model.ListOfCart.Any())
             {
                 <div class="alert alert-warning text-center" role="alert">
@@ -25,9 +96,9 @@
                         <thead class="table-light">
                             <tr>
                                 <th>Item</th>
-                                <th>Price</th>
+                                <th class="text-danger">Price</th>
                                 <th>Quantity</th>
-                                <th>Total</th>
+                                <th class="text-danger">Total</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -36,22 +107,22 @@
                             {
                                 <tr>
                                     <td class="text-start">@cart.Item.Title</td>
-                                    <td class="text-success fw-bold">$@cart.Item.Price</td>
+                                    <td class="fw-bold text-danger">$@cart.Item.Price.ToString("F2")</td>
                                     <td>
                                         <div class="d-flex justify-content-center align-items-center gap-2">
                                             <form asp-action="Decrease" asp-controller="Cart" asp-route-id="@cart.Id" method="post">
-                                                <button class="btn btn-sm btn-outline-secondary" type="submit">−</button>
+                                                <button class="btn btn-sm btn-outline-secondary" type="submit" aria-label="Decrease quantity">−</button>
                                             </form>
                                             <span class="fw-semibold">@cart.Count</span>
                                             <form asp-action="Increase" asp-controller="Cart" asp-route-id="@cart.Id" method="post">
-                                                <button class="btn btn-sm btn-outline-secondary" type="submit">+</button>
+                                                <button class="btn btn-sm btn-outline-secondary" type="submit" aria-label="Increase quantity">+</button>
                                             </form>
                                         </div>
                                     </td>
-                                    <td class="fw-semibold">$@(cart.Item.Price * cart.Count)</td>
+                                    <td class="fw-semibold text-danger">$@(cart.Item.Price * cart.Count)</td>
                                     <td>
                                         <form asp-action="Remove" asp-controller="Cart" asp-route-id="@cart.Id" method="post">
-                                            <button class="btn btn-sm btn-outline-danger" type="submit">
+                                            <button class="btn btn-sm btn-outline-danger" type="submit" aria-label="Delete item">
                                                 <i class="bi bi-trash"></i> Delete
                                             </button>
                                         </form>
@@ -63,7 +134,7 @@
                 </div>
 
                 <div class="text-end mt-4">
-                    <h4>Total: <span class="text-success fw-bold">$@Model.OrderHeader.OrderTotal</span></h4>
+                    <h4>Total: <span class="fw-bold text-danger">@Model.OrderHeader.OrderTotal.ToString("C")</span></h4>
                 </div>
 
                 <div class="text-end mt-3">

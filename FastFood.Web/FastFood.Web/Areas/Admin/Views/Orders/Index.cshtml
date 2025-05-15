@@ -1,69 +1,96 @@
 ﻿@model IEnumerable<FastFood.Models.OrderHeader>
 
 @{
-	ViewData["Title"] = "Index";
+    ViewData["Title"] = "Orders";
 }
-<h3>Search By Order Status</h3>
-<div class="btn-group" role="group">
-	<a asp-controller="Orders" asp-action="Index" asp-route-status="Pending" class="btn btn-primary">Pending</a>
-	<a asp-controller="Orders" asp-action="Index" asp-route-status="Processing" class="btn btn-info">Processing</a>
-	<a asp-controller="Orders" asp-action="Index" asp-route-status="UnderProcess" class="btn btn-warning">Under Process</a>
-	<a asp-controller="Orders" asp-action="Index" asp-route-status="Shipped" class="btn btn-success">Shipped</a>
-	<a asp-controller="Orders" asp-action="Index" asp-route-status="Delivered" class="btn btn-secondary">Delivered</a>
-	<a asp-controller="Orders" asp-action="Index" asp-route-status="Canceled" class="btn btn-danger">Canceled</a>
-	<a asp-controller="Orders" asp-action="Index" class="btn btn-secondary">All</a>
+
+<div class="container my-5">
+
+    <h2 class="mb-4 text-center">Search Orders by Status</h2>
+
+    <div class="btn-group d-flex justify-content-center mb-4" role="group" aria-label="Order Status Filter">
+        <a asp-controller="Orders" asp-action="Index" asp-route-status="Pending" class="btn btn-outline-primary">Pending</a>
+        <a asp-controller="Orders" asp-action="Index" asp-route-status="Processing" class="btn btn-outline-info">Processing</a>
+        <a asp-controller="Orders" asp-action="Index" asp-route-status="UnderProcess" class="btn btn-outline-warning">Under Process</a>
+        <a asp-controller="Orders" asp-action="Index" asp-route-status="Shipped" class="btn btn-outline-success">Shipped</a>
+        <a asp-controller="Orders" asp-action="Index" asp-route-status="Delivered" class="btn btn-outline-secondary">Delivered</a>
+        <a asp-controller="Orders" asp-action="Index" asp-route-status="Canceled" class="btn btn-outline-danger">Canceled</a>
+        <a asp-controller="Orders" asp-action="Index" class="btn btn-outline-dark">All</a>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="table-responsive shadow-sm rounded">
+            <table class="table table-striped table-hover align-middle text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Id)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.OrderDate)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Name)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.OrderTotal)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.OrderStatus)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.PaymentStatus)</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>@item.OrderDate.ToString("yyyy-MM-dd")</td>
+                            <td class="text-start ps-3">@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td class="text-success fw-semibold">$@Html.DisplayFor(modelItem => item.OrderTotal)</td>
+                            <td>
+                                <span class="badge
+                                    @(item.OrderStatus == OrderStatus.Pending ? "bg-primary" :
+                                      item.OrderStatus == OrderStatus.Processing ? "bg-warning text-dark" :
+                                      item.OrderStatus == OrderStatus.Shipped ? "bg-success" :
+                                      item.OrderStatus == OrderStatus.Delivered ? "bg-secondary" :
+                                      item.OrderStatus == OrderStatus.Canceled ? "bg-danger" : "bg-light text-dark")">
+                                    @item.OrderStatus
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge @(item.PaymentStatus == PaymentStatus.Completed ? "bg-success" : "bg-danger")">
+                                    @item.PaymentStatus
+                                </span>
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-center gap-2">
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-sm btn-outline-primary" title="Edit">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
+                                        <a href="@Url.Action("OrderDetails", new { id = item.Id })" class="btn btn-sm btn-outline-info" title="Details">
+                                            <i class="bi bi-info-circle"></i>
+                                        </a>
+                                        <form asp-action="Delete" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Are you sure you want to delete this Order?');" style="display:inline;">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("OrderDetailsCustomer", new { id = item.Id })" class="btn btn-sm btn-outline-secondary" title="Details">
+                                            <i class="bi bi-info-circle"></i>
+                                        </a>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info mt-4 text-center" role="alert">
+            No orders found.
+        </div>
+    }
 </div>
 
-@if (Model != null && Model.Any())
-{
-	<table class="table mt-2">
-		<thead>
-			<tr>
-				<th>@Html.DisplayNameFor(model => model.Id)</th>
-				<th>@Html.DisplayNameFor(model => model.OrderDate)</th>
-				<th>@Html.DisplayNameFor(model => model.Name)</th>
-				<th>@Html.DisplayNameFor(model => model.OrderTotal)</th>
-				<th>@Html.DisplayNameFor(model => model.OrderStatus)</th>
-				<th>@Html.DisplayNameFor(model => model.PaymentStatus)</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach (var item in Model)
-			{
-				<tr>
-					<td>@Html.DisplayFor(modelItem => item.Id)</td>
-					<td>@Html.DisplayFor(modelItem => item.OrderDate)</td>
-					<td>@Html.DisplayFor(modelItem => item.Name)</td>
-					<td>@Html.DisplayFor(modelItem => item.OrderTotal)</td>
-					<td>@Html.DisplayFor(modelItem => item.OrderStatus)</td>
-					<td>@Html.DisplayFor(modelItem => item.PaymentStatus)</td>
-					<td>
-						@if (User.IsInRole("Admin"))
-						{
-							<a href="@Url.Action("Edit", new { id = item.Id })">Edit</a>
-							<span>||</span>
-							<a href="@Url.Action("OrderDetails", new { id = item.Id })">Details</a>
-							<a href="@Url.Action("Delete", new { id = item.Id })"
-							   onclick="return confirm('Are you sure you want to delete this Order?');">Delete</a>
-						}
-						else
-						{
-							
-							<a href="@Url.Action("OrderDetailsCustomer", new { id = item.Id })">Details</a>
-							<span>||</span>
-							
-						}
-
-					</td>
-				</tr>
-			}
-		</tbody>
-	</table>
-}
-else
-{
-	<div class="alert alert-info mt-3">
-		No orders found.
-	</div>
-}

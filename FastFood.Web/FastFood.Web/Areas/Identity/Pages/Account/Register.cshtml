@@ -3,93 +3,123 @@
 @{
     ViewData["Title"] = "Register";
 }
+<style>
+    .form-control:focus {
+        border-top: 2px solid #dc3545 !important;
+        box-shadow: 0 -2px 6px rgba(220, 53, 69, 0.25);
+        outline: none;
+    }
 
-<h1>@ViewData["Title"]</h1>
+    .form-control.filled {
+        border-top: 2px solid #dc3545 !important;
+    }
 
-<div class="row">
-    <div class="col-md-4">
-        <form id="registerForm" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-floating">
-                <input asp-for="Input.Name" class="form-control" autocomplete="username" aria-required="true" />  
-                <label asp-for="Input.Name"></label>
-                <span asp-validation-for="Input.Name" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.City" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.City"></label>
-                <span asp-validation-for="Input.City" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.Address" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.Address"></label>
-                <span asp-validation-for="Input.Address" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.PostalCode" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.PostalCode"></label>
-                <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.Email"></label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
-                <label asp-for="Input.Password"></label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
-                <label asp-for="Input.ConfirmPassword"></label>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                    @foreach (var role in Model.Roles)
-                    {
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="SelectedRole" value="@role.Name" id="@role.Name" />
-                            <label class="form-check-label" for="@role.Name">@role.Name</label>
+    .form-check-input:checked + .form-check-label {
+        border-color: #dc3545;
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+    }
+
+    .form-check:hover {
+        background-color: rgba(220, 53, 69, 0.05);
+        cursor: pointer;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card shadow rounded-4 border-0">
+                <div class="card-body px-4 py-5">
+                    <h2 class="text-center text-danger fw-bold mb-4">Create Account</h2>
+
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger small"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.Name" class="form-label fw-semibold">Full Name</label>
+                            <input asp-for="Input.Name"
+                                   type="text"
+                                   class="form-control border-0 border-top border-2 border-danger rounded-0 @(string.IsNullOrWhiteSpace(Model.Input?.Name) ? "" : "filled")" />
+                            <span asp-validation-for="Input.Name" class="text-danger small"></span>
                         </div>
-                    }
-                </div>
-            
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary mt-4">Register</button>
-            
-        </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to register.</h3>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins!)
+
+                        <div class="mb-3">
+                            <label asp-for="Input.City" class="form-label fw-semibold">City</label>
+                            <input asp-for="Input.City"
+                                   type="text"
+                                   class="form-control border-0 border-top border-2 border-danger rounded-0 @(string.IsNullOrWhiteSpace(Model.Input?.City) ? "" : "filled")" />
+                            <span asp-validation-for="Input.City" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.Address" class="form-label fw-semibold">Address</label>
+                            <input asp-for="Input.Address"
+                                   type="text"
+                                   class="form-control border-0 border-top border-2 border-danger rounded-0 @(string.IsNullOrWhiteSpace(Model.Input?.Address) ? "" : "filled")" />
+                            <span asp-validation-for="Input.Address" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.PostalCode" class="form-label fw-semibold">Postal Code</label>
+                            <input asp-for="Input.PostalCode"
+                                   type="text"
+                                   class="form-control border-0 border-top border-2 border-danger rounded-0 @(string.IsNullOrWhiteSpace(Model.Input?.PostalCode) ? "" : "filled")" />
+                            <span asp-validation-for="Input.PostalCode" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.Email" class="form-label fw-semibold">Email</label>
+                            <input asp-for="Input.Email"
+                                   type="text"
+                                   class="form-control border-0 border-top border-2 border-danger rounded-0 @(string.IsNullOrWhiteSpace(Model.Input?.Email) ? "" : "filled")" />
+                            <span asp-validation-for="Input.Email" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.Password" class="form-label fw-semibold">Password</label>
+                            <input asp-for="Input.Password"
+                                   type="password"
+                                   class="form-control border-0 border-top border-2 border-danger rounded-0 @(string.IsNullOrWhiteSpace(Model.Input?.Password) ? "" : "filled")" />
+                            <span asp-validation-for="Input.Password" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.ConfirmPassword" class="form-label fw-semibold">Confirm Password</label>
+                            <input asp-for="Input.ConfirmPassword"
+                                   type="password"
+                                   class="form-control border-0 border-top border-2 border-danger rounded-0 @(string.IsNullOrWhiteSpace(Model.Input?.ConfirmPassword) ? "" : "filled")" />
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Select Role</label>
+                            <div class="row g-3">
+                                @for (int i = 0; i < Model.Roles.Count; i++)
                                 {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    var role = Model.Roles[i];
+                                    <div class="col-6">
+                                        <label for="role-@i" class="form-check d-block p-3 border border-secondary rounded text-center shadow-sm position-relative">
+                                            <input type="radio"
+                                                   id="role-@i"
+                                                   class="form-check-input position-absolute top-0 end-0 m-2"
+                                                   name="SelectedRole"
+                                                   value="@role.Name" />
+                                            <div class="fw-semibold text-dark">@role.Name</div>
+                                        </label>
+                                    </div>
                                 }
-                            </p>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-danger w-100 btn-lg">Register</button>
+
+                        <div class="text-center mt-3">
+                            <small>Already registered? <a asp-page="/Account/Login">Login</a></small>
                         </div>
                     </form>
-                }
-            }
-        </section>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

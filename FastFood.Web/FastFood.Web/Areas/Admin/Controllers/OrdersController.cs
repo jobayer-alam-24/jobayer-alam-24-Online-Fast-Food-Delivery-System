@@ -63,6 +63,7 @@ namespace FastFood.Web.Areas.Admin.Controllers
             {
                 try
                 {
+                    orderHeader.OrderDate = DateTime.Now;
                     _context.Update(orderHeader);
                     await _context.SaveChangesAsync();
                 }

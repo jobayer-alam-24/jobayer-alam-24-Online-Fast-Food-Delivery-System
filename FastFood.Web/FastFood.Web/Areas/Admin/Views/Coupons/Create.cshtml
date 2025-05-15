@@ -4,57 +4,125 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<style>
+    /* Center container */
+    .create-container {
+        min-height: 80vh; /* roughly same as login */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+        background-color: #f8f9fa; /* light bg */
+    }
 
-<h4>Coupon</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
+    /* Card styling */
+    .card {
+        border-radius: 1rem;
+        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.25);
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .card-body {
+        padding: 2.5rem 2rem;
+    }
+
+    /* Input & select focus */
+    .form-control:focus, .form-select:focus {
+        border-top: 2px solid #dc3545 !important;
+        box-shadow: 0 -2px 6px rgba(220, 53, 69, 0.25);
+        outline: none;
+    }
+
+    /* Filled inputs */
+    .form-control.filled, .form-select.filled {
+        border-top: 2px solid #dc3545 !important;
+    }
+
+    /* Labels */
+    label {
+        font-weight: 600;
+    }
+
+    /* Heading */
+    h1 {
+        color: #dc3545;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    /* Button */
+    .btn-danger {
+        width: 100%;
+    }
+
+    /* Validation messages */
+    .text-danger {
+        font-size: 0.85rem;
+    }
+</style>
+
+<div class="create-container">
+    <div class="card">
+        <div class="card-body">
+            <h1>Create Coupon</h1>
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label"></label>
+                    <input asp-for="Title"
+                           class="form-control border-0 border-top border-2 border-danger rounded-0 @(Model?.Title == null || string.IsNullOrWhiteSpace(Model.Title) ? "" : "filled")" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="CouponType" class="form-label"></label>
+                    <select asp-for="CouponType"
+                            class="form-select border-0 border-top border-2 border-danger rounded-0 @(Model?.CouponType == null ? "" : "filled")"
+                            asp-items="@Html.GetEnumSelectList<FastFood.Models.CouponType>()">
+                        <option value="">Select Coupon Type</option>
+                    </select>
+                    <span asp-validation-for="CouponType" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Discount" class="form-label"></label>
+                    <input asp-for="Discount"
+                           class="form-control border-0 border-top border-2 border-danger rounded-0 @(Model?.Discount == 0 ? "" : "filled")" />
+                    <span asp-validation-for="Discount" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="MinimumAmount" class="form-label"></label>
+                    <input asp-for="MinimumAmount"
+                           class="form-control border-0 border-top border-2 border-danger rounded-0 @(Model?.MinimumAmount == 0 ? "" : "filled")" />
+                    <span asp-validation-for="MinimumAmount" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="CouponPicture" class="form-label"></label>
+                    <input type="file" name="files" class="form-control" />
+                    <span asp-validation-for="CouponPicture" class="text-danger"></span>
+                </div>
+
+                <div class="form-check mb-4">
+                    <input class="form-check-input" asp-for="IsActive" type="checkbox" />
+                    <label class="form-check-label" for="IsActive">@Html.DisplayNameFor(model => model.IsActive)</label>
+                </div>
+
+                <button type="submit" class="btn btn-danger btn-lg">Create</button>
+            </form>
+            <div class="mt-3 text-center">
+                <a asp-action="Index" class="text-danger">Back to List</a>
             </div>
-            <div class="form-group">
-                <label asp-for="CouponType" class="control-label"></label>
-                <select asp-for="CouponType" class="form-control" asp-items="@Html.GetEnumSelectList<CouponType>()">
-					<option value="">Select Coupon Type</option>
-                </select>
-                <span asp-validation-for="CouponType" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Discount" class="control-label"></label>
-                <input asp-for="Discount" class="form-control" />
-                <span asp-validation-for="Discount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MinimumAmount" class="control-label"></label>
-                <input asp-for="MinimumAmount" class="form-control" />
-                <span asp-validation-for="MinimumAmount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CouponPicture" class="control-label"></label>
-                <input type="file" name="files" class="form-control" />
-                <span asp-validation-for="CouponPicture" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsActive" type="checkbox" /> @Html.DisplayNameFor(model => model.IsActive)
-                </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

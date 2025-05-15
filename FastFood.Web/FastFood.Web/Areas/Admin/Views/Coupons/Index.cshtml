@@ -1,78 +1,79 @@
 ﻿@model IEnumerable<FastFood.Models.Coupon>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Coupons";
 }
 
-<h1>Index</h1>
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-danger">
+            <i class="bi bi-ticket-detailed-fill"></i> Coupons
+        </h2>
+        <a asp-action="Create" class="btn btn-outline-danger shadow-sm">
+            <i class="bi bi-plus-circle-fill"></i> Add New
+        </a>
+    </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CouponType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Discount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MinimumAmount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CouponPicture)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsActive)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CouponType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MinimumAmount)
-            </td>
-            <td>
-                    @if (item.CouponPicture != null && item.CouponPicture.Length > 0)
-                    {
-                        <img src="data:image/png;base64,@Convert.ToBase64String(item.CouponPicture)" alt="Coupon Image" style="max-width: 100px; max-height: 100px;" />
-                    }
-                    else
-                    {
-                        <span>No Image</span>
-                    }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <div class="card shadow-sm border-0 rounded">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover table-striped align-middle mb-0 text-center">
+                    <thead class="table-danger">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col" class="text-start">Title</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Discount</th>
+                            <th scope="col">Min Amount</th>
+                            <th scope="col">Picture</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td class="text-start">@item.Title</td>
+                                <td>@item.CouponType</td>
+                                <td>@item.Discount.ToString("C")</td>
+                                <td>@item.MinimumAmount.ToString("C")</td>
+                                <td>
+                                    @if (item.CouponPicture != null && item.CouponPicture.Length > 0)
+                                    {
+                                        <img src="data:image/png;base64,@Convert.ToBase64String(item.CouponPicture)" alt="Coupon" class="img-thumbnail rounded" style="max-height: 80px;" />
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted fst-italic">No Image</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.IsActive)
+                                    {
+                                        <span class="badge bg-danger">Active</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">Inactive</span>
+                                    }
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-success" title="Edit">
+                                            Edit
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger" title="Delete">
+                                            Delete
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

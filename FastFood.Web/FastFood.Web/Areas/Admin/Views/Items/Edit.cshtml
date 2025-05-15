@@ -4,74 +4,125 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<style>
+    .edit-container {
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+    }
 
-<h4>ItemViewModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <p>Current Image</p>
+    .card {
+        border-radius: 1rem;
+        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.25);
+        max-width: 600px;
+        width: 100%;
+    }
+
+    .card-body {
+        padding: 2.5rem 2rem;
+    }
+
+    .form-control:focus {
+        border-top: 2px solid #dc3545 !important;
+        box-shadow: 0 -2px 6px rgba(220, 53, 69, 0.25);
+        outline: none;
+    }
+
+    h4 {
+        color: #dc3545;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    label {
+        font-weight: 600;
+    }
+
+    .form-group img {
+        max-width: 200px;
+        max-height: 200px;
+        display: block;
+        margin: 1rem 0;
+    }
+</style>
+
+<div class="edit-container">
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="Edit" enctype="multipart/form-data">
+                <h4>Edit Item</h4>
+                <hr />
+
+                <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+
                 @if (ViewBag.CurrentImage != null)
                 {
-                    <img src="@ViewBag.CurrentImage" alt="Current Image" style="max-width: 200px; max-height: 200px;" />
+                    <div class="form-group">
+                        <label>Current Image</label>
+                        <img src="@ViewBag.CurrentImage" alt="Current Image" />
+                    </div>
                 }
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" type="file" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class="form-control" id="CategoryId">
-                    <option value="">-- Select Category --</option>
-                    @foreach (var category in (IEnumerable<SelectListItem>)ViewBag.Categories)
-                    {
-                        <option value="@category.Value">@category.Text</option>
-                    }
-                </select>
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SubCategoryId" class="control-label"></label>
-                <select asp-for="SubCategoryId" class="form-control" asp-items="ViewBag.SubCategories">
-                    <option value="">Select Sub Category</option>
-                </select>
-                <span asp-validation-for="SubCategoryId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save Changes" class="btn btn-primary" />
-            </div>
-        </form>
+
+                <div class="mb-3">
+                    <label asp-for="ImageUrl" class="form-label">Choose Item Image</label>
+                    <input asp-for="ImageUrl" type="file" class="form-control" />
+                    <span asp-validation-for="ImageUrl" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Price" class="form-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="CategoryId" class="form-label">Category</label>
+                    <select asp-for="CategoryId" class="form-control" id="CategoryId">
+                        <option value="">-- Select Category --</option>
+                        @foreach (var category in (IEnumerable<SelectListItem>)ViewBag.Categories)
+                        {
+                            <option value="@category.Value">@category.Text</option>
+                        }
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="SubCategoryId" class="form-label">Sub Category</label>
+                    <select asp-for="SubCategoryId" class="form-control" asp-items="ViewBag.SubCategories">
+                        <option value="">-- Select SubCategory --</option>
+                    </select>
+                    <span asp-validation-for="SubCategoryId" class="text-danger small"></span>
+                </div>
+
+                <button type="submit" class="btn btn-danger w-100 btn-lg mb-3">Save Changes</button>
+
+                <div class="text-center">
+                    <a asp-action="Index" class="btn btn-outline-danger rounded-pill px-4 py-2 fw-semibold">
+                        ← Back to List
+                    </a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    <partial name="_ValidationScriptsPartial" />
     <script>
         $(document).ready(function () {
             $('#CategoryId').change(function () {

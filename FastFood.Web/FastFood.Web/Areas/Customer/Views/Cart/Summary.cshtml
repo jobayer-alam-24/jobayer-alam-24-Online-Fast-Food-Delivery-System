@@ -4,16 +4,99 @@
 @{
     ViewData["Title"] = "Cart Summary";
 }
-@if(ViewBag.ErrorMessage != null)
-{
-    <h1>@ViewBag.ErrorMessage</h1>
-}
-<div class="container mt-5">
+
+<style>
+    /* Center container vertically and horizontally */
+    .form-container {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem 1rem;
+        background-color: #f8f9fa; /* Light background for contrast */
+    }
+
+    .card {
+        max-width: 720px;
+        width: 100%;
+        border-radius: 1rem;
+        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.25);
+    }
+
+    .card-header {
+        background-color: #dc3545 !important; /* Bootstrap danger red */
+        color: white;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        text-align: center;
+        font-weight: 700;
+        font-size: 1.75rem;
+    }
+
+    h4 {
+        font-weight: 700;
+    }
+
+    .table th, .table td {
+        vertical-align: middle !important;
+    }
+
+    .text-success {
+        color: #dc3545 !important; /* override green with danger red */
+    }
+
+    /* Buttons */
+    .btn-outline-secondary {
+        border-color: #dc3545;
+        color: #dc3545;
+        font-weight: 600;
+    }
+
+        .btn-outline-secondary:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+
+    .btn-outline-danger {
+        border-color: #dc3545;
+        color: #dc3545;
+        font-weight: 600;
+    }
+
+        .btn-outline-danger:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+
+    .btn-success {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        font-weight: 700;
+    }
+
+        .btn-success:hover {
+            background-color: #a71d2a;
+            border-color: #a71d2a;
+        }
+
+    .alert-warning {
+        background-color: #f8d7da;
+        color: #842029;
+        border-color: #f5c2c7;
+    }
+</style>
+
+<div class="form-container">
     <div class="card shadow">
-        <div class="card-header bg-primary text-white">
-            <h2 class="mb-0">Your Cart</h2>
+        <div class="card-header">
+            Your Cart
         </div>
         <div class="card-body">
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <h5 class="text-danger text-center mb-4">@ViewBag.ErrorMessage</h5>
+            }
+
             @if (Model.ListOfCart == null || !Model.ListOfCart.Any())
             {
                 <div class="alert alert-warning text-center" role="alert">
@@ -26,10 +109,10 @@
                     <table class="table table-hover align-middle text-center">
                         <thead class="table-light">
                             <tr>
-                                <th>Item</th>
-                                <th>Price</th>
+                                <th class="text-start">Item</th>
+                                <th class="text-danger">Price</th>
                                 <th>Quantity</th>
-                                <th>Total</th>
+                                <th class="text-danger">Total</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -38,22 +121,22 @@
                             {
                                 <tr>
                                     <td class="text-start">@cart.Item.Title</td>
-                                    <td class="text-success fw-bold">$@cart.Item.Price</td>
+                                    <td class="fw-bold text-danger">$@cart.Item.Price</td>
                                     <td>
                                         <div class="d-flex justify-content-center align-items-center gap-2">
                                             <form asp-action="Decrease" asp-controller="Cart" asp-route-id="@cart.Id" method="post">
-                                                <button class="btn btn-sm btn-outline-secondary" type="submit">−</button>
+                                                <button class="btn btn-sm btn-outline-secondary" type="submit" aria-label="Decrease quantity">−</button>
                                             </form>
                                             <span class="fw-semibold">@cart.Count</span>
                                             <form asp-action="Increase" asp-controller="Cart" asp-route-id="@cart.Id" method="post">
-                                                <button class="btn btn-sm btn-outline-secondary" type="submit">+</button>
+                                                <button class="btn btn-sm btn-outline-secondary" type="submit" aria-label="Increase quantity">+</button>
                                             </form>
                                         </div>
                                     </td>
-                                    <td class="fw-semibold">$@(cart.Item.Price * cart.Count)</td>
+                                    <td class="fw-semibold text-danger">$@(cart.Item.Price * cart.Count)</td>
                                     <td>
                                         <form asp-action="Remove" asp-controller="Cart" asp-route-id="@cart.Id" method="post">
-                                            <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                                            <button class="btn btn-sm btn-outline-danger" type="submit" aria-label="Delete item">Delete</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -63,7 +146,7 @@
                 </div>
 
                 <div class="text-end mt-4">
-                    <h4>Total (Including Vat): <span class="text-success fw-bold">$@Model.OrderHeader.OrderTotal</span></h4>
+                    <h4>Total (Including Vat): <span class="text-danger fw-bold">$@Model.OrderHeader.OrderTotal</span></h4>
                 </div>
 
                 <hr class="my-4" />
@@ -71,7 +154,7 @@
                 <h4 class="mb-3">Shipping Details</h4>
                 <form asp-action="Summary" asp-controller="Cart" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
-                    <input type="hidden" asp-for="@Model.OrderHeader.ApplicationUserId"/>
+                    <input type="hidden" asp-for="@Model.OrderHeader.ApplicationUserId" />
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label asp-for="@Model.OrderHeader.Name" class="form-label"></label>
@@ -85,12 +168,12 @@
                         </div>
                         <div class="col-md-6">
                             <label asp-for="@Model.OrderHeader.OrderDate" class="form-label">Pick Date</label>
-                            <input asp-for="@Model.OrderHeader.OrderDate" class="form-control" type="date" value="@DateTime.UtcNow" />
+                            <input asp-for="@Model.OrderHeader.OrderDate" class="form-control" type="date" value="@DateTime.UtcNow.ToString("yyyy-MM-dd")" />
                             <span asp-validation-for="@Model.OrderHeader.DateOfPick" class="text-danger"></span>
                         </div>
                         <div class="col-md-6">
                             <label asp-for="@Model.OrderHeader.TimeOfPick" class="form-label">Pick Time</label>
-                            <input asp-for="@Model.OrderHeader.TimeOfPick" value="@DateTime.UtcNow" class="form-control" type="time" />
+                            <input asp-for="@Model.OrderHeader.TimeOfPick" class="form-control" type="time" value="@DateTime.UtcNow.ToString("HH:mm")" />
                             <span asp-validation-for="@Model.OrderHeader.TimeOfPick" class="text-danger"></span>
                         </div>
                     </div>
@@ -107,30 +190,29 @@
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
     <script>
-		function InputValidate() {
-        var name = document.getElementById("OrderHeader_Name").value;
-        var phoneNumber = document.getElementById("OrderHeader_PhoneNumber").value;
-        var dateOfPick = document.getElementById("OrderHeader_OrderDate").value;
-        var timeOfPick = document.getElementById("OrderHeader_TimeOfPick").value;
+        function InputValidate() {
+            var name = document.getElementById("OrderHeader_Name").value;
+            var phoneNumber = document.getElementById("OrderHeader_PhoneNumber").value;
+            var dateOfPick = document.getElementById("OrderHeader_OrderDate").value;
+            var timeOfPick = document.getElementById("OrderHeader_TimeOfPick").value;
 
-        if (name === "") {
-            alert("Please enter your name.");
-            return false;
+            if (name === "") {
+                alert("Please enter your name.");
+                return false;
+            }
+            if (phoneNumber === "") {
+                alert("Please enter your phone number.");
+                return false;
+            }
+            if (dateOfPick === "") {
+                alert("Please select a pick-up date.");
+                return false;
+            }
+            if (timeOfPick === "") {
+                alert("Please select a pick-up time.");
+                return false;
+            }
+            return true;
         }
-        if (phoneNumber === "") {
-            alert("Please enter your phone number.");
-            return false;
-        }
-        if (dateOfPick === "") {
-            alert("Please select a pick-up date.");
-            return false;
-        }
-        if (timeOfPick === "") {
-            alert("Please select a pick-up time.");
-            return false;
-        }
-        return true;
-
-		}
     </script>
 }

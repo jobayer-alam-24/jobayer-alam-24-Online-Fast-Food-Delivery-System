@@ -30,9 +30,11 @@ namespace FastFood.Web.Areas.Admin.Controllers
                 Description = x.Description,
                 Price = x.Price,
                 CategoryId = x.CategoryId,
-                SubCategoryId = x.SubCategoryId
-            }).ToList();
+                SubCategoryId = x.SubCategoryId,
+                CategoryTitle = x.Category.Title,
+                SubCategoryTitle = x.SubCategory.Title,
 
+            }).ToList();
             return View(listFromDb);
         }
         [HttpGet]
@@ -62,7 +64,10 @@ namespace FastFood.Web.Areas.Admin.Controllers
                     var uploadDir = @"Images/Items";
                     var fileName = Guid.NewGuid().ToString() + "-" + vm.ImageUrl.FileName;
                     var filePath = Path.Combine(_webHostEnvironment.WebRootPath,uploadDir, fileName);
-                    await vm.ImageUrl.CopyToAsync(new FileStream(filePath, FileMode.Create));
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await vm.ImageUrl.CopyToAsync(stream);
+                    }
                     model.Image = "/" + uploadDir + "/" + fileName;
                 }
                 model.Title = vm.Title;
@@ -134,7 +139,10 @@ namespace FastFood.Web.Areas.Admin.Controllers
                     }
                 }
 
-                await vm.ImageUrl.CopyToAsync(new FileStream(filePath, FileMode.Create));
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await vm.ImageUrl.CopyToAsync(stream);
+                }
                 itemFromDb.Image = "/" + uploadDir + "/" + fileName;
             }
 
@@ -161,12 +169,26 @@ namespace FastFood.Web.Areas.Admin.Controllers
 
             if (!string.IsNullOrEmpty(itemFromDb.Image))
             {
-                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, itemFromDb.Image.TrimStart('/'));
-                if (System.IO.File.Exists(imagePath))
+                try
                 {
-                    System.IO.File.Delete(imagePath);
+                    var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, itemFromDb.Image.TrimStart('/'));
+
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        
+                        System.GC.Collect();
+                        System.GC.WaitForPendingFinalizers();
+
+                        System.IO.File.Delete(imagePath);
+                    }
+                }
+                catch (IOException ex)
+                {
+                    
+                    Console.WriteLine("Failed to delete file: " + ex.Message);
                 }
             }
+
 
             _context.Items.Remove(itemFromDb);
             _context.SaveChanges();
