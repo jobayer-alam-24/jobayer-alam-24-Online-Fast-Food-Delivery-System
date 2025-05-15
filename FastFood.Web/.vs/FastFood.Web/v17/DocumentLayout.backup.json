@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3DA7FF39-C901-454F-ADE2-2F691FEE63E1}|FastFood.Web\\FastFood.Web.csproj|d:\\jobayer-alam-24-online-fast-food-delivery-system\\fastfood.web\\fastfood.web\\areas\\admin\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3DA7FF39-C901-454F-ADE2-2F691FEE63E1}|FastFood.Web\\FastFood.Web.csproj|solutionrelative:fastfood.web\\areas\\admin\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +27,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\Areas\\Admin\\Views\\Users\\Index.cshtml",
+              "RelativeDocumentMoniker": "FastFood.Web\\Areas\\Admin\\Views\\Users\\Index.cshtml",
+              "ToolTip": "D:\\jobayer-alam-24-Online-Fast-Food-Delivery-System\\FastFood.Web\\FastFood.Web\\Areas\\Admin\\Views\\Users\\Index.cshtml",
+              "RelativeToolTip": "FastFood.Web\\Areas\\Admin\\Views\\Users\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-15T10:39:05.412Z",
+              "EditorCaption": ""
             }
           ]
         }

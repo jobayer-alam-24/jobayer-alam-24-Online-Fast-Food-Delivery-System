@@ -1,6 +1,8 @@
 ﻿using System.Security.Claims;
+using FastFood.Models;
 using FastFood.Repository;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FastFood.Web.Areas.Admin.Controllers
@@ -13,12 +15,19 @@ namespace FastFood.Web.Areas.Admin.Controllers
         public UsersController(ApplicationDbContext context)
         {
             this.context = context;
+         
         }
         public IActionResult Index()
         {
-            var claimsIdentity = User.Identity as ClaimsIdentity;
-            var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            return View(context.ApplicationUsers.Where(x => x.Id == claims).ToList());
+            var users = context.ApplicationUsers.ToList();
+            if(users != null)
+            {
+                return View(users);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }

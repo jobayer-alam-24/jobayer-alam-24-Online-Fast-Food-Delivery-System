@@ -1,4 +1,5 @@
-﻿using FastFood.Repository;
+﻿using FastFood.Models;
+using FastFood.Repository;
 using FastFood.Web.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;

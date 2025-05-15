@@ -1,7 +1,35 @@
-﻿
+﻿@model IEnumerable<ApplicationUser>
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "All Users";
 }
 
-<h1><a asp-area="Identity" asp-controller="Account" asp-action="Register">Register</a></h1>
+<h2 class="text-center my-4 text-white bg-danger py-3 rounded">All Application Users</h2>
 
+<div class="table-responsive shadow-sm rounded">
+    <table class="table table-hover table-bordered align-middle mb-0">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">User Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">City</th>
+                <th scope="col">Postal Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td class="text-break fw-semibold">@user.UserName</td>
+                    <td class="text-break">@user.Email</td>
+                    <td class="text-break">@user.Name</td>
+                    <td class="text-break">@user.Address</td>
+                    <td>@user.City</td>
+                    <td>@user.PostalCode</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

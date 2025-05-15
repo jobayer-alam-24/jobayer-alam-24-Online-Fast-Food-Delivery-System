@@ -54,6 +54,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Items\0680454e-273b-4d45-a32c-a07e7e7742ef-pizza.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>FastFood.Web</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/FastFood.Web</BasePath>
+      <RelativePath>Images/Items/0680454e-273b-4d45-a32c-a07e7e7742ef-pizza.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>tzb6bmolgh</Fingerprint>
+      <Integrity>x7re/AhUY8ucefqR2HVJb9h8gdhfa5nCLrvQuu0tkfw=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Items\0680454e-273b-4d45-a32c-a07e7e7742ef-pizza.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Images\Items\22858330-4565-421c-964b-2d3a7d56fd4d-rosogolla.jpeg'))">
       <SourceType>Package</SourceType>
       <SourceId>FastFood.Web</SourceId>
