@@ -19,25 +19,28 @@ namespace FastFood.Web.ViewComponents
 
             if (!string.IsNullOrEmpty(userId))
             {
-                var sessionCount = HttpContext.Session.GetInt32("SessionCart");
+                var sessionKey = $"SessionCart_{userId}";
+                var sessionCount = HttpContext.Session.GetInt32(sessionKey);
 
                 if (sessionCount.HasValue)
                 {
-                    return View(sessionCount.Value); 
+                    return View(sessionCount.Value);
                 }
                 else
                 {
                     var cartCount = await _context.Carts
                         .Include(x => x.Item)
                         .Where(x => x.ApplicationUserId == userId)
-                        .ToListAsync();
-                    HttpContext.Session.SetInt32("SessionCart", cartCount.Count);
-                    return View(cartCount.Count);
+                        .SumAsync(x => x.Count);
+
+                    HttpContext.Session.SetInt32(sessionKey, cartCount);
+                    return View(cartCount);
                 }
             }
 
             return View(0);
         }
+
 
     }
 }

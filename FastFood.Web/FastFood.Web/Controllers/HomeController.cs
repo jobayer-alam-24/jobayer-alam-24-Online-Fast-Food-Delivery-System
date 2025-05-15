@@ -41,15 +41,26 @@ namespace FastFood.Web.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var items = await _context.Items.Include(x => x.Category).Include(x => x.SubCategory).FirstOrDefaultAsync(x => x.Id == id);
+            var item = await _context.Items
+                .Include(x => x.Category)
+                .Include(x => x.SubCategory)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (item == null)
+            {
+                return NotFound();
+            }
+
             var cart = new Cart()
             {
-                ItemId = items.Id,
-                Item = items,
+                ItemId = item.Id,
+                Item = item,
                 Count = 1
             };
+
             return View(cart);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
@@ -59,10 +70,14 @@ namespace FastFood.Web.Controllers
             {
                 return Redirect("/Identity/Account/Register");
             }
+
             if (ModelState.IsValid)
             {
                 cart.ApplicationUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-                var cartFromDb = await _context.Carts.FirstOrDefaultAsync(x => x.ApplicationUserId == cart.ApplicationUserId && x.ItemId == cart.ItemId);
+
+                var cartFromDb = await _context.Carts
+                    .FirstOrDefaultAsync(x => x.ApplicationUserId == cart.ApplicationUserId && x.ItemId == cart.ItemId);
+
                 if (cartFromDb == null)
                 {
                     cart.Id = 0;
@@ -73,15 +88,22 @@ namespace FastFood.Web.Controllers
                     cartFromDb.Count += cart.Count;
                     _context.Carts.Update(cartFromDb);
                 }
-                _context.SaveChanges();
-                var cartItems = await _context.Carts
-                .Where(x => x.ApplicationUserId == cart.ApplicationUserId)
-                .ToListAsync();
 
-                HttpContext.Session.SetInt32("SessionCart", cartItems.Count);
+                await _context.SaveChangesAsync();
+
+                var userIdentity = User.Identity as ClaimsIdentity;
+                var userId = userIdentity?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                var totalCount = await _context.Carts
+                    .Where(x => x.ApplicationUserId == cart.ApplicationUserId)
+                    .SumAsync(x => x.Count);
+                var sessionKey = $"SessionCart_{userId}";
+                HttpContext.Session.SetInt32(sessionKey, totalCount);
+           
             }
+
             return RedirectToAction("Index");
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

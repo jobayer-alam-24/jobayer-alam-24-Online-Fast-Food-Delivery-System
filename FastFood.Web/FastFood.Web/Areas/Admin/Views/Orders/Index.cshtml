@@ -3,7 +3,7 @@
 @{
 	ViewData["Title"] = "Index";
 }
-<h3>Search By Payment Status</h3>
+<h3>Search By Order Status</h3>
 <div class="btn-group" role="group">
 	<a asp-controller="Orders" asp-action="Index" asp-route-status="Pending" class="btn btn-primary">Pending</a>
 	<a asp-controller="Orders" asp-action="Index" asp-route-status="Processing" class="btn btn-info">Processing</a>
@@ -41,19 +41,20 @@
 					<td>
 						@if (User.IsInRole("Admin"))
 						{
-							@Html.ActionLink("Edit", "Edit ", new { id = item.Id })
+							<a href="@Url.Action("Edit", new { id = item.Id })">Edit</a>
 							<span>||</span>
-							@Html.ActionLink("Details", "OrderDetails", new { id = item.Id }) <span>||</span>
-							@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new
-								{
-									onclick = "return confirm('Are you sure you want to delete this Order?');"
-								})
-							;
-						}else
+							<a href="@Url.Action("OrderDetails", new { id = item.Id })">Details</a>
+							<a href="@Url.Action("Delete", new { id = item.Id })"
+							   onclick="return confirm('Are you sure you want to delete this Order?');">Delete</a>
+						}
+						else
 						{
-							@Html.ActionLink("Details", "OrderDetailsCustomer", new { id = item.Id })
+							
+							<a href="@Url.Action("OrderDetailsCustomer", new { id = item.Id })">Details</a>
+							<span>||</span>
 							
 						}
+
 					</td>
 				</tr>
 			}

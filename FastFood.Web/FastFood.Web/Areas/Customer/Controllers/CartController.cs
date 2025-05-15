@@ -125,49 +125,66 @@ namespace FastFood.Web.Areas.Customer.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+        private async Task UpdateSessionCartCount(string userId)
+        {
+            var totalCount = await _context.Carts
+                .Where(c => c.ApplicationUserId == userId)
+                .SumAsync(c => c.Count);
+
+            var sessionKey = $"SessionCart_{userId}";
+            HttpContext.Session.SetInt32(sessionKey, totalCount);
+        }
 
 
         public async Task<IActionResult> Increase(int id)
         {
+            var userIdentity = User.Identity as ClaimsIdentity;
+            var userId = userIdentity?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var cart = await _context.Carts.FirstOrDefaultAsync(x => x.Id == id);
+
             if (cart != null)
             {
                 cart.Count += 1;
-                HttpContext.Session.SetInt32("SessionCart", cart.Count);
                 _context.Carts.Update(cart);
                 await _context.SaveChangesAsync();
+                await UpdateSessionCartCount(userId);
             }
+
             return RedirectToAction(nameof(Index));
         }
+
         public async Task<IActionResult> Decrease(int id)
         {
+            var userIdentity = User.Identity as ClaimsIdentity;
+            var userId = userIdentity?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var cart = await _context.Carts.FirstOrDefaultAsync(x => x.Id == id);
-            if (cart != null)
+
+            if (cart != null && cart.Count > 1)
             {
-                if(cart.Count > 1)
-                {
-                    cart.Count -= 1;
-                    HttpContext.Session.SetInt32("SessionCart", cart.Count);
-                    _context.Carts.Update(cart);
-                    await _context.SaveChangesAsync();
-                }
+                cart.Count -= 1;
+                _context.Carts.Update(cart);
+                await _context.SaveChangesAsync();
+                await UpdateSessionCartCount(userId);
             }
+
             return RedirectToAction(nameof(Index));
         }
+
         public async Task<IActionResult> Remove(int id)
         {
+            var userIdentity = User.Identity as ClaimsIdentity;
+            var userId = userIdentity?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var cart = await _context.Carts.FirstOrDefaultAsync(x => x.Id == id);
+
             if (cart != null)
             {
                 _context.Carts.Remove(cart);
                 await _context.SaveChangesAsync();
-                var cartItems = await _context.Carts
-           .Where(x => x.ApplicationUserId == cart.ApplicationUserId)
-           .ToListAsync();
-
-                HttpContext.Session.SetInt32("SessionCart", cartItems.Count);
+                await UpdateSessionCartCount(userId);
             }
+
             return RedirectToAction(nameof(Index));
         }
+
     }
 }

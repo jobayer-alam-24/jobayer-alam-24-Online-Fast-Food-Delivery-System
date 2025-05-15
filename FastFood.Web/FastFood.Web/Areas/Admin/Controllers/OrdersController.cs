@@ -119,5 +119,77 @@ namespace FastFood.Web.Areas.Admin.Controllers
 
             return View(orderDetails);
         }
+        public IActionResult StartProcessing(int id)
+        {
+            var orderHeader = _context.OrderHeaders
+                .Include(x => x.ApplicationUser)
+                .FirstOrDefault(x => x.Id == id);
+
+            if (orderHeader == null)
+            {
+                return NotFound("Order not found.");
+            }
+
+            orderHeader.OrderStatus = OrderStatus.Processing;
+            _context.OrderHeaders.Update(orderHeader);
+            _context.SaveChanges();
+
+            TempData["success"] = "Order is being processed";
+            return RedirectToAction("OrderDetails", "Orders", new { id = orderHeader.Id });
+        }
+        public IActionResult ShipOrder(int id)
+        {
+            var orderHeader = _context.OrderHeaders
+                .Include(x => x.ApplicationUser)
+                .FirstOrDefault(x => x.Id == id);
+
+            if (orderHeader == null)
+            {
+                return NotFound("Order not found.");
+            }
+
+            orderHeader.OrderStatus = OrderStatus.Shipped;
+            _context.OrderHeaders.Update(orderHeader);
+            _context.SaveChanges();
+
+            TempData["success"] = "Order is Shipped";
+            return RedirectToAction("OrderDetails", "Orders", new { id = orderHeader.Id });
+        }
+        public IActionResult CancelOrder(int id)
+        {
+            var orderHeader = _context.OrderHeaders
+                .Include(x => x.ApplicationUser)
+                .FirstOrDefault(x => x.Id == id);
+
+            if (orderHeader == null)
+            {
+                return NotFound("Order not found.");
+            }
+
+            orderHeader.OrderStatus = OrderStatus.Canceled;
+            _context.OrderHeaders.Update(orderHeader);
+            _context.SaveChanges();
+
+            TempData["success"] = "Order is Canceled";
+            return RedirectToAction("OrderDetails", "Orders", new { id = orderHeader.Id });
+        }
+        public IActionResult CancelOrderCustomer(int id)
+        {
+            var orderHeader = _context.OrderHeaders
+                .Include(x => x.ApplicationUser)
+                .FirstOrDefault(x => x.Id == id);
+
+            if (orderHeader == null)
+            {
+                return NotFound("Order not found.");
+            }
+
+            orderHeader.OrderStatus = OrderStatus.Canceled;
+            _context.OrderHeaders.Update(orderHeader);
+            _context.SaveChanges();
+
+            TempData["success"] = "Order is Canceled";
+            return RedirectToAction("Index","Orders");
+        }
     }
 }

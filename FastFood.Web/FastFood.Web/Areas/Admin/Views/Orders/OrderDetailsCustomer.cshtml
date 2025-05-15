@@ -37,7 +37,14 @@ else
 {
     <div class="alert alert-info">No items found in this order.</div>
 }
+@if(Model.OrderHeader.OrderStatus != OrderStatus.Canceled)
+{
+    <form method="post" asp-action="CancelOrderCustomer" asp-route-id="@Model.OrderHeader.Id" class="mt-3">
+        <button type="submit" class="btn btn-danger">Cancel Order</button>
+    </form>
+}
+else
+{
+	<div class="alert alert-danger mt-3">This order has been canceled.</div>
+}
 
-<form method="post" asp-action="CancelOrder" asp-route-id="@Model.OrderHeader.Id" class="mt-3">
-    <button type="submit" class="btn btn-danger">Cancel Order</button>
-</form>

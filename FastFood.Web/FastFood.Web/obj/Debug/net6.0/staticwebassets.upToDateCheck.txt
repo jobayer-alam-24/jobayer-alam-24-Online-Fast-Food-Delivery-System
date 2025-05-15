@@ -1,8 +1,7 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
-wwwroot\Images\Items\14206bd8-742c-4ab7-bb68-119fb40906fe-samurai.jpg
-wwwroot\Images\Items\19cd973c-5e3b-48bb-bedb-d82fc12cff7c-500+500px.jpg
-wwwroot\Images\Items\1fededd7-6290-4547-99f3-0af93c3770f3-appIcon.ico
+wwwroot\Images\Items\22858330-4565-421c-964b-2d3a7d56fd4d-rosogolla.jpeg
+wwwroot\Images\Items\a5da2ec6-f2c9-4ff0-bb1f-37b382972cd1-burger.jpeg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

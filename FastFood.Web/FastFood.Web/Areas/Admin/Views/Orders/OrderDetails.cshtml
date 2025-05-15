@@ -4,7 +4,10 @@
 @{
     ViewData["Title"] = "Order Details";
 }
-
+@if (TempData["success"] != null)
+{
+    <h2>@TempData["success"]</h2>
+}
 <h2 class="mb-4">Order Summary</h2>
 
 <div class="card mb-4">
@@ -83,8 +86,19 @@ else
 }
 
 <div class="mt-4">
-    <a asp-action="StartProcessing" class="btn btn-primary">Start Processing</a>
-    <a asp-action="CancelOrder" class="btn btn-danger">Cancel Order</a>
+    @if(Model.OrderHeader.OrderStatus == OrderStatus.Processing)
+    {
+        <a asp-action="ShipOrder" asp-route-id="@Model.OrderHeader.Id" class="btn btn-success">Ship Order</a>
+    }
+    else
+    {
+        if(Model.OrderHeader.OrderStatus != OrderStatus.Shipped)
+        {
+            
+            <a asp-action="StartProcessing" asp-route-id="@Model.OrderHeader.Id" class="btn btn-primary">Start Processing</a>
+        }
+    }
+    <a asp-action="CancelOrder" asp-route-id="@Model.OrderHeader.Id"  asp class="btn btn-danger">Cancel Order</a>
 </div>
 
 <a asp-action="Index" class="btn btn-secondary mt-3">Back to Orders</a>
