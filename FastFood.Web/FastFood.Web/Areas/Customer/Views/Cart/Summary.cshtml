@@ -189,6 +189,7 @@
                             <label asp-for="@Model.OrderHeader.TimeOfPick" class="form-label">Pick Time</label>
                             <input asp-for="@Model.OrderHeader.TimeOfPick" class="form-control" type="time" value="@DateTime.UtcNow.ToString("HH:mm")" />
                             <span asp-validation-for="@Model.OrderHeader.TimeOfPick" class="text-danger"></span>
+                            <input type="hidden" name="orderTotal" value="@Model.OrderHeader.OrderTotal"/>
                         </div>
                     </div>
 

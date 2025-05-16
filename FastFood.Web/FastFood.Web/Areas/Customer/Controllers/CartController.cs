@@ -94,7 +94,7 @@ namespace FastFood.Web.Areas.Customer.Controllers
             
         }
         [HttpPost]
-        public IActionResult Summary(CartOrderViewModel vm)
+        public IActionResult Summary(CartOrderViewModel vm, double orderTotal)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == userId);
@@ -105,7 +105,6 @@ namespace FastFood.Web.Areas.Customer.Controllers
                 return View(vm);
             }
 
-            
             vm.ListOfCart = _context.Carts
                 .Where(c => c.ApplicationUserId == userId)
                 .Include(c => c.Item)
@@ -128,24 +127,15 @@ namespace FastFood.Web.Areas.Customer.Controllers
                 DateOfPick = vm.OrderHeader.DateOfPick,
                 OrderStatus = OrderStatus.Pending,
                 PaymentStatus = PaymentStatus.Pending,
-                TransactionId = Guid.NewGuid().ToString()
+                TransactionId = Guid.NewGuid().ToString(),
+                CouponCode = vm.OrderHeader.CouponCode
             };
 
-            foreach (var cart in vm.ListOfCart)
-            {
-                if (cart.Item == null)
-                {
-                    ViewBag.ErrorMessage = "One or more items in the cart are invalid.";
-                    return View(vm);
-                }
-
-                newOrder.SubTotal += cart.Item.Price * cart.Count;
-            }
-
-            newOrder.OrderTotal = newOrder.SubTotal - newOrder.CouponDiscount;
+            newOrder.OrderTotal = orderTotal;
 
             _context.OrderHeaders.Add(newOrder);
             _context.SaveChanges();
+
             foreach (var cart in vm.ListOfCart)
             {
                 var orderDetails = new OrderDetails
@@ -165,6 +155,7 @@ namespace FastFood.Web.Areas.Customer.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
         [HttpPost]
         public IActionResult ApplyCoupon(string couponCode = null)
         {
