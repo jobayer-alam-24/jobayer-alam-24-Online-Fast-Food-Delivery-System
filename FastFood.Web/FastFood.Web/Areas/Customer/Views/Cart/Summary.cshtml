@@ -85,6 +85,14 @@
         border-color: #f5c2c7;
     }
 </style>
+@if (TempData["messege"] != null)
+{
+    <div class="alert alert-dismissible fade show" role="alert" style="background-color: #DC3545; color: white;">
+        @TempData["messege"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
 
 <div class="form-container">
     <div class="card shadow">
@@ -144,9 +152,15 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="d-flex justify-content-start">
+                    <form asp-action="ApplyCoupon" asp-controller="Cart" method="post" class="d-flex gap-2">
+                        <input type="text" name="couponCode" class="form-control" placeholder="Enter coupon code" />
+                        <button type="submit" class="btn" style="background-color: #dc3545 !important; color: white;">Apply</button>
+                    </form>
+                </div>
 
                 <div class="text-end mt-4">
-                    <h4>Total (Including Vat): <span class="text-danger fw-bold">$@Model.OrderHeader.OrderTotal</span></h4>
+                    <h4>Total (Including Vat): <span class="text-danger fw-bold d-inline-block">$@Model.OrderHeader.OrderTotal</span></h4>
                 </div>
 
                 <hr class="my-4" />

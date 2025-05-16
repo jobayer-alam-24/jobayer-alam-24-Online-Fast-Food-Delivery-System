@@ -36,22 +36,62 @@ namespace FastFood.Web.Areas.Customer.Controllers
             return View(details);
         }
         [HttpGet]
-        public IActionResult Summary()
+        public IActionResult Summary(string couponCode = null)
         {
-            var loggedInUserId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
-           details = new CartOrderViewModel()
-           {
-               OrderHeader = new OrderHeader(),
-               ListOfCart = _context.Carts.Include(x => x.Item).Where(x => x.ApplicationUserId == loggedInUserId).ToList()
-           };
-            details.OrderHeader.ApplicationUser = _context.ApplicationUsers.FirstOrDefault(x => x.Id == loggedInUserId);
-            details.OrderHeader.Name = details.OrderHeader.ApplicationUser.Name;
-            details.OrderHeader.PhoneNumber = details.OrderHeader.ApplicationUser.PhoneNumber;
-            foreach(var cart in details.ListOfCart)
+            if (couponCode == null)
             {
-                details.OrderHeader.OrderTotal += cart.Item.Price * cart.Count;
+                var loggedInUserId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
+                details = new CartOrderViewModel()
+                {
+                    OrderHeader = new OrderHeader(),
+                    ListOfCart = _context.Carts.Include(x => x.Item).Where(x => x.ApplicationUserId == loggedInUserId).ToList()
+                };
+                details.OrderHeader.ApplicationUser = _context.ApplicationUsers.FirstOrDefault(x => x.Id == loggedInUserId);
+                details.OrderHeader.Name = details.OrderHeader.ApplicationUser.Name;
+                details.OrderHeader.PhoneNumber = details.OrderHeader.ApplicationUser.PhoneNumber;
+                foreach (var cart in details.ListOfCart)
+                {
+                    details.OrderHeader.OrderTotal += cart.Item.Price * cart.Count;
+                }
+
+                return View(details);
             }
-            return View(details);
+            else
+            {
+                var loggedInUserId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
+                details = new CartOrderViewModel()
+                {
+                    OrderHeader = new OrderHeader(),
+                    ListOfCart = _context.Carts.Include(x => x.Item).Where(x => x.ApplicationUserId == loggedInUserId).ToList()
+                };
+                details.OrderHeader.ApplicationUser = _context.ApplicationUsers.FirstOrDefault(x => x.Id == loggedInUserId);
+                details.OrderHeader.Name = details.OrderHeader.ApplicationUser.Name;
+                details.OrderHeader.PhoneNumber = details.OrderHeader.ApplicationUser.PhoneNumber;
+
+                foreach (var cart in details.ListOfCart)
+                {
+                    details.OrderHeader.OrderTotal += cart.Item.Price * cart.Count;
+                }
+
+                var coupon = _context.Coupons.FirstOrDefault(c => c.Title == couponCode);
+                if (coupon != null)
+                {
+                    if (coupon.CouponType == CouponType.Percentage)
+                    {
+                        details.OrderHeader.OrderTotal -= details.OrderHeader.OrderTotal * (coupon.Discount / 100);
+                    }
+                    else if (coupon.CouponType == CouponType.Currency)
+                    {
+                        details.OrderHeader.OrderTotal -= coupon.Discount;
+                    }
+                }
+
+                details.OrderHeader.CouponCode = couponCode;
+                details.OrderHeader.CouponDiscount = coupon?.Discount ?? 0;
+
+                return View(details);
+            }
+            
         }
         [HttpPost]
         public IActionResult Summary(CartOrderViewModel vm)
@@ -125,6 +165,31 @@ namespace FastFood.Web.Areas.Customer.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public IActionResult ApplyCoupon(string couponCode = null)
+        {
+            if (string.IsNullOrEmpty(couponCode))
+            {
+                TempData["messege"] = "Coupon Is Empty. Please Apply a Valid Coupon.";
+                return RedirectToAction(nameof(Summary));
+            }
+            else
+            {
+                var coupon = _context.Coupons.FirstOrDefault(c => c.Title == couponCode);
+                var cart = _context.Carts
+                    .Include(c => c.Item)
+                    .Where(c => c.ApplicationUserId == User.FindFirstValue(ClaimTypes.NameIdentifier))
+                    .ToList();
+                var totalCount = cart.Sum(c => c.Count);
+                if (coupon == null || !coupon.IsActive || coupon.MinimumAmount > totalCount)
+                {
+                    TempData["messege"] = "Coupon is invalid or inactive or item is too low to apply the coupon.";
+                    return RedirectToAction("Summary");
+                }
+                ViewBag.CouponCode = coupon.Title;
+                return RedirectToAction("Summary", new {couponCode = coupon.Title});
+            }
+        }
         private async Task UpdateSessionCartCount(string userId)
         {
             var totalCount = await _context.Carts
@@ -134,7 +199,6 @@ namespace FastFood.Web.Areas.Customer.Controllers
             var sessionKey = $"SessionCart_{userId}";
             HttpContext.Session.SetInt32(sessionKey, totalCount);
         }
-
 
         public async Task<IActionResult> Increase(int id)
         {
