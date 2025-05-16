@@ -16,7 +16,7 @@ namespace FastFood.Web.Areas.Admin.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(string status)
+        public IActionResult Index(string status, string userid = null)
         {
             IEnumerable<OrderHeader> orders;
 
@@ -28,11 +28,23 @@ namespace FastFood.Web.Areas.Admin.Controllers
             }
             else
             {
-                var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-                orders = _context.OrderHeaders
-                    .Include(x => x.ApplicationUser)
-                    .Where(x => x.ApplicationUserId == userId)
-                    .ToList();
+                if(!string.IsNullOrEmpty(userid))
+                {
+                    
+                    orders = _context.OrderHeaders
+                        .Include(x => x.ApplicationUser)
+                        .Where(x => x.ApplicationUserId == userid)
+                        .ToList();
+                }
+                else
+                {
+                    var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+                    orders = _context.OrderHeaders
+                        .Include(x => x.ApplicationUser)
+                        .Where(x => x.ApplicationUserId == userId)
+                        .ToList();
+                }
+                    
             }
 
             if (!string.IsNullOrEmpty(status) && Enum.TryParse<OrderStatus>(status, true, out var parsedStatus))
@@ -57,14 +69,21 @@ namespace FastFood.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, OrderHeader orderHeader)
         {
+            string userId = "";
             if (id != orderHeader.Id) return NotFound();
             ViewData["Total"] = orderHeader.OrderTotal;
             if (ModelState.IsValid)
             {
                 try
                 {
-                    orderHeader.OrderDate = DateTime.Now;
-                    _context.Update(orderHeader);
+                    var orderInDb = await _context.OrderHeaders.FindAsync(id);
+                    if (orderInDb == null) return NotFound();
+
+                    orderInDb.Name = orderHeader.Name;
+                    orderInDb.OrderStatus = orderHeader.OrderStatus;
+                    orderInDb.PaymentStatus = orderHeader.PaymentStatus;
+                    orderInDb.OrderDate = DateTime.Now;
+                    userId = orderInDb.ApplicationUserId;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -72,7 +91,7 @@ namespace FastFood.Web.Areas.Admin.Controllers
                     if (!_context.OrderHeaders.Any(e => e.Id == id)) return NotFound();
                     else throw;
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { status = "", userid = userId });
             }
             return View(orderHeader);
         }
